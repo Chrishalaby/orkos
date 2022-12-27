@@ -1,0 +1,54 @@
+{
+  "data":[
+    {
+      "image":"flyer1.png",
+      "name":"Summer Here",
+      "price":10,
+      "inventoryStatus":"Available",
+      "description":"Beirut, Hamra Square"
+    },
+    {
+      "image":"flyer2.png",
+      "name":"All Night Long",
+      "price":15,
+      "inventoryStatus":"Limited",
+      "description":"Dbayeh Beach, Avenue XYZ"
+    },
+    {
+      "image":"flyer3.png",
+      "name":"Going Down",
+      "price":20,
+      "inventoryStatus":"Unavailable",
+      "description":"Burj Hammoud, ABC Street"
+    },
+    {
+      "image":"flyer4.png",
+      "name":"Summer Here",
+      "price":10,
+      "inventoryStatus":"Available",
+      "description":"Beirut, Hamra Square"
+    },
+    {
+      "image":"flyer5.png",
+      "name":"All Night Long",
+      "price":15,
+      "inventoryStatus":"Limited",
+      "description":"Dbayeh Beach, Avenue XYZ"
+    },
+    {
+      "image":"flyer6.png",
+      "name":"Going Down",
+      "price":20,
+      "inventoryStatus":"Unavailable",
+      "description":"Burj Hammoud, ABC Street"
+    },
+    {
+      "image":"flyer7.png",
+      "name":"Summer Here",
+      "price":10,
+      "inventoryStatus":"Available",
+      "description":"Beirut, Hamra Square"
+    }
+
+  ]
+}

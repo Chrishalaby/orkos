@@ -1,0 +1,99 @@
+<section>
+  <h2 class="text-center p-3">Just Dropped</h2>
+  <p-carousel [value]="products" [numVisible]="4" [numScroll]="3" [circular]="true" [showIndicators]="true" [responsiveOptions]="responsiveOptions">
+    <ng-template let-product pTemplate="item">
+      <div class="product-item">
+          <div class="product-item-content">
+              <div class="main-container mb-3">
+                  <img [src]="'assets/images/custom/' + product.image" [alt]="product.name" class="product-image"/>
+                  <!-- <p-button type="button" class="image-button pl-2" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                  <p-button type="button" class="image-button2 pl-2" styleClass="p-button p-button-rounded mr-2" icon="pi pi-info"></p-button> -->
+              </div>
+              <div>
+                  <h4 class="mb-1">{{product.name}}</h4>
+                  <h4 class="mt-0 mb-3">${{product.price}}</h4>
+                  <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">Tickets: {{product.inventoryStatus}}</span>
+                  <div class="product-description flex flex-row justify-content-center">
+                    <i class="pi pi-map-marker"></i>
+                    {{product.description}}
+                  </div>
+                  <div class="product-time">{{product.time}}</div>
+                  <div class="more-buttons mt-2">
+                    <p-button type="button" (click)="showModalDialog()" class="image-button pl-2" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                    <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+                      [draggable]="false" [resizable]="false">
+                      <p class="m-0">
+                        yes this is working
+                      </p>
+                      <ng-template pTemplate="footer">
+                      <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+                      </ng-template>
+                  </p-dialog>
+                    <p-button type="button" class="image-button2 pl-2" styleClass="p-button p-button-rounded mr-2" icon="pi pi-info"></p-button>
+                    <!-- <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button> -->
+                  </div>
+              </div>
+          </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
+<section>
+  <h2 class="text-center p-3">Most Popular</h2>
+  <p-carousel [value]="products" [numVisible]="4" [numScroll]="3" [circular]="true" [showIndicators]="true" [responsiveOptions]="responsiveOptions">
+    <ng-template let-product pTemplate="item">
+      <div class="product-item">
+          <div class="product-item-content">
+              <div class="main-container mb-3">
+                  <img [src]="'assets/images/custom/' + product.image" [alt]="product.name" class="product-image"/>
+                  <!-- <p-button type="button" class="image-button pl-2" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                  <p-button type="button" class="image-button2 pl-2" styleClass="p-button p-button-rounded mr-2" icon="pi pi-info"></p-button> -->
+              </div>
+              <div>
+                  <h4 class="mb-1">{{product.name}}</h4>
+                  <h4 class="mt-0 mb-3">${{product.price}}</h4>
+                  <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">Tickets: {{product.inventoryStatus}}</span>
+                  <div class="product-description flex flex-row justify-content-center">
+                    <i class="pi pi-map-marker"></i>
+                    {{product.description}}
+                  </div>
+                  <div class="product-time">{{product.time}}</div>
+                  <div class="more-buttons mt-2">
+                    <p-button type="button" (click)="showModalDialog()" class="image-button pl-2" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                    <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+                      [draggable]="false" [resizable]="false">
+                      <p class="m-0">
+                        yes this is working
+                      </p>
+                      <ng-template pTemplate="footer">
+                      <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+                      </ng-template>
+                  </p-dialog>
+                    <p-button type="button" class="image-button2 pl-2" styleClass="p-button p-button-rounded mr-2" icon="pi pi-info"></p-button>
+                    <!-- <p-button type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-cog"></p-button> -->
+                  </div>
+              </div>
+          </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>
+<section>
+  <h2>Close to You</h2>
+</section>
+<section>
+  <h2>Beach Side</h2>
+
+</section>
+<section>
+  <h2>Mountain Side</h2>
+
+</section>
+<section>
+  <h2>Techno</h2>
+
+</section>
+<section>
+  <h2>Private Parties</h2>
+
+</section>
