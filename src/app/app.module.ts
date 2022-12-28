@@ -11,12 +11,21 @@ import {ButtonModule} from 'primeng/button';
 import {DialogModule} from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SidebarModule} from 'primeng/sidebar';
+import { FilesUploadComponent } from './files-upload/files-upload.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import {InputTextModule} from 'primeng/inputtext';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { MessageService } from 'primeng/api';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
     SideBarComponent,
     TopBarComponent,
-    HomeComponent
+    HomeComponent,
+    FilesUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -26,10 +35,16 @@ import {SidebarModule} from 'primeng/sidebar';
     ButtonModule,
     DialogModule,
     BrowserAnimationsModule,
-    SidebarModule
+    SidebarModule,
+    FileUploadModule,
+    InputTextModule,
+    MessagesModule,
+    MessageModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
