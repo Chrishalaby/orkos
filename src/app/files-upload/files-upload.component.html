@@ -28,7 +28,7 @@
     <p>{{eventForm.get('location')?.value}}</p>
     <img [src]="{{  }}" alt="image preview" />
   </div> -->
-  <p-carousel class="mt-2 md:mt-0" [value]="events" [numVisible]="1" [numScroll]="1" [circular]="true" [showIndicators]="true" [responsiveOptions]="responsiveOptions" >
+  <p-carousel class="mt-2 md:mt-0" [value]="events" [numVisible]="1" [numScroll]="1" [circular]="true" [showIndicators]="true">
     <ng-template let-product pTemplate="item">
       <h1 class="mb-3 md:mb-6 text-center">Preview</h1>
       <div class="product-item">
@@ -39,7 +39,7 @@
               <div>
                   <h4 class="mb-1">{{product.name}}</h4>
                   <h4 class="mt-0 mb-3">${{product.price}}</h4>
-                  <span>Tickets: {{eventForm.get('ticketAmount')?.value}}</span>
+                  <span >Tickets: {{eventForm.get('ticketAmount')?.value}}</span>
                   <div class="product-description flex flex-row justify-content-center">
                     <i class="pi pi-map-marker"></i>
                     {{product.location}}

@@ -22,7 +22,6 @@ export class FilesUploadComponent implements OnInit {
   eventForm: FormGroup;
   image?: File;
   imageUrl: string | undefined;
-  responsiveOptions: { breakpoint: string; numVisible: number; numScroll: number; showIndicators: boolean; }[];
 
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService) {
@@ -35,26 +34,6 @@ export class FilesUploadComponent implements OnInit {
     this.eventForm.valueChanges.subscribe((event) => {
       this.events = [event]
     });
-    this.responsiveOptions = [
-      {
-          breakpoint: '1024px',
-          numVisible: 1,
-          numScroll: 1,
-          showIndicators: false
-      },
-      {
-          breakpoint: '768px',
-          numVisible: 1,
-          numScroll: 1,
-          showIndicators: false
-      },
-      {
-          breakpoint: '560px',
-          numVisible: 1,
-          numScroll: 1,
-          showIndicators: false
-      }
-  ];
   }
 
   onSelect(event: { files: (File | undefined)[]; }) {

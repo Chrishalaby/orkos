@@ -18,6 +18,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { MessageService } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MenuModule} from 'primeng/menu';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MessagesModule,
     MessageModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MenuModule,
 
   ],
   providers: [MessageService],
