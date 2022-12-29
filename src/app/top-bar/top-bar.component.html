@@ -3,16 +3,17 @@
     <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000">
       <div class="flex flex-row">
         <img src="../assets/images/custom/OrkosLogo.png" alt="Logo" class="w-3">
-        <a class="flex align-self-center text-5xl ml-3 font-bold" [routerLink]="['/']" style="text-decoration: none; color: white;"> Orkos</a>
+        <a class="flex align-self-center text-5xl ml-3 font-bold text-900" [routerLink]="['/']" style="text-decoration: none;"> Orkos</a>
       </div>
       <div class="flex flex-column mt-4">
-        <span class="flex flex-row">
-          <i class="pi pi-home flex align-self-center"></i>
-          <button pButton label="Home" class="p-button-text text-xl" [routerLink]="['/']"></button>
-        </span>
-
-        <p-button label="File Upload" styleClass="p-button-link" [routerLink]="['/files-upload']"></p-button>
-
+          <button pButton  class="p-button-text text-xl" [routerLink]="['/']">
+            <i class="pi pi-home flex align-self-center"></i>
+            <p class="pl-3 text-900">Home</p>
+          </button>
+          <button pButton class="p-button-text text-xl" [routerLink]="['/files-upload']">
+            <i class="pi pi-upload flex align-self-center"></i>
+            <p class="pl-3 text-900">File Upload</p>
+          </button>
       </div>
 
     </p-sidebar>

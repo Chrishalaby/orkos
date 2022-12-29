@@ -8,6 +8,11 @@ export interface Event {
   ticketAmount: number;
   location: string;
   image: File;
+  infoTheme: string;
+  infoDate: string;
+  food: boolean;
+  drinks: boolean;
+  parking: boolean;
 }
 
 @Component({
@@ -22,7 +27,12 @@ export class FilesUploadComponent implements OnInit {
   eventForm: FormGroup;
   image?: File;
   imageUrl: string | undefined;
-
+  tickets = [
+    {name: 'limited'},
+    {name: 'available'},
+    {name: 'unavailable'}];
+  displayModalFill: boolean | undefined;
+  displayModalPrev: boolean | undefined;
 
   constructor(private formBuilder: FormBuilder, private messageService: MessageService) {
     this.eventForm = this.formBuilder.group({
@@ -30,6 +40,11 @@ export class FilesUploadComponent implements OnInit {
       price: '',
       ticketAmount: '',
       location: '',
+      infoTheme: '',
+      infoDate: '',
+      food: '',
+      drinks: '',
+      parking: '',
     });
     this.eventForm.valueChanges.subscribe((event) => {
       this.events = [event]
@@ -49,5 +64,10 @@ export class FilesUploadComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-
+  showModalFill() {
+    this.displayModalFill = true;
+  }
+  showModalPreview() {
+    this.displayModalPrev = true;
+  }
 }

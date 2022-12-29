@@ -19,7 +19,10 @@ import {MessageModule} from 'primeng/message';
 import { MessageService } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MenuModule} from 'primeng/menu';
-
+import {DropdownModule} from 'primeng/dropdown';
+import {InputMaskModule} from 'primeng/inputmask';
+import {CheckboxModule} from 'primeng/checkbox';
+import {TooltipModule} from 'primeng/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,10 @@ import {MenuModule} from 'primeng/menu';
     FormsModule,
     ReactiveFormsModule,
     MenuModule,
+    DropdownModule,
+    InputMaskModule,
+    CheckboxModule,
+    TooltipModule
 
   ],
   providers: [MessageService],

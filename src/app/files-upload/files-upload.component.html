@@ -1,33 +1,30 @@
-<section class="flex flex-column md:flex-row  justify-content-evenly">
+<section class="flex flex-column md:flex-row  justify-content-evenly mt-2 md:mt-6">
   <form [formGroup]="eventForm" class="text-center">
-    <!-- (ngSubmit)="submit()"  to be filled later -->
+    <!-- ################################## (ngSubmit)="submit()"  to be filled later -->
     <h1 class="text-center mb-4">File Uploads</h1>
     <p-fileUpload name="myFile" accept="image/*" mode="basic" (onSelect)="onSelect($event)" chooseLabel="Upload Image"></p-fileUpload>
     <span class="p-float-label mt-4">
       <input id="float-input" type="text" pInputText formControlName="name">
       <label for="float-input">Event Name</label>
     </span>
+    <!-- ########### FIX THE FLOAT INPUTS NOT WORKING ON MOBILE VIEW !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
     <span class="p-float-label mt-4">
       <input id="float-input" type="text" pInputText formControlName="price">
       <label for="float-input">Price</label>
     </span>
     <span class="p-float-label mt-4">
-      <input id="float-input" type="text" pInputText formControlName="ticketAmount">
-      <label for="float-input">Ticket Amount</label>
+      <p-dropdown [options]="tickets" formControlName="ticketAmount" placeholder="Ticket availability" optionLabel="name" optionValue="name"[showClear]="true"></p-dropdown>
+      <label for="dropdown">Tickets</label>
     </span>
     <span class="p-float-label mt-4">
       <input id="float-input" type="text" pInputText formControlName="location">
       <label for="float-input">Location</label>
     </span>
+    <div class="more-buttons mt-2">
+      <button pButton type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-outlined" (click)="showModalFill()"></button>
+    </div>
   </form>
-  <!-- <div class="flex flex-column">
-    <h1>Preview</h1>
-    <p>{{eventForm.get('name')?.value}}</p>
-    <p>{{eventForm.get('price')?.value}}</p>
-    <p>{{eventForm.get('ticketAmount')?.value}}</p>
-    <p>{{eventForm.get('location')?.value}}</p>
-    <img [src]="{{  }}" alt="image preview" />
-  </div> -->
+
   <p-carousel class="mt-2 md:mt-0" [value]="events" [numVisible]="1" [numScroll]="1" [circular]="true" [showIndicators]="true">
     <ng-template let-product pTemplate="item">
       <h1 class="mb-3 md:mb-6 text-center">Preview</h1>
@@ -39,10 +36,16 @@
               <div>
                   <h4 class="mb-1">{{product.name}}</h4>
                   <h4 class="mt-0 mb-3">${{product.price}}</h4>
-                  <span >Tickets: {{eventForm.get('ticketAmount')?.value}}</span>
+                  <span [class]="eventForm.get('inventoryStatus')?.value.toLowerCase()">Tickets: {{product.ticketAmount}}</span>
+                  <!-- ########### Fix color of tickets isnt working -->
                   <div class="product-description flex flex-row justify-content-center">
                     <i class="pi pi-map-marker"></i>
                     {{product.location}}
+                  </div>
+                  <div class="more-buttons mt-2">
+                    <button pButton type="button" icon="pi pi-shopping-cart" class="p-button-outlined p-button-rounded mr-2"></button>
+                    <button pButton type="button" icon="pi pi-star-fill" class="p-button-rounded p-button-success p-button-outlined mr-2" ></button>
+                    <button pButton type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-outlined" (click)="showModalPreview()"></button>
                   </div>
               </div>
           </div>
@@ -50,3 +53,46 @@
     </ng-template>
   </p-carousel>
 </section>
+
+
+<div>
+  <p-dialog header="Extra Information" [(visible)]="displayModalFill" [modal]="true" [style]="{width: '50vw'}"[draggable]="false" [resizable]="false">
+  <form [formGroup]="eventForm" class="flex flex-column">
+  <span class="p-float-label mt-4 mx-1">
+    <input pInputText formControlName="infoTheme" tooltipPosition="right" pTooltip="Any specific theme? if not then write 'Casual'."/>
+    <label for="dropdown">Theme</label>
+  </span>
+  <span class="p-float-label mt-4 mx-1">
+    <p-inputMask mask="99/99/9999" formControlName="infoDate" placeholder="99/99/9999" slotChar="dd/mm/yyyy" tooltipPosition="right" pTooltip="The date and time of the Event."></p-inputMask>
+    <label class="block">Date & Time</label>
+  </span>
+  <!-- <span class="p-float-label mt-4 mx-1">
+    <input pInputText formControlName="infoTheme"/>
+    <label class="block">Location</label>
+  </span> -->
+  <!-- ########## Was thinking of letting them add a google map link and linking it, not sure yet -->
+  <p-checkbox class="mt-3 mx-1" label="Food" [binary]="true" formControlName="food" tooltipPosition="right" pTooltip="Food Available?"></p-checkbox>
+  <p-checkbox class="mt-2 mx-1" [binary]="true" label="Drinks" formControlName="drinks" tooltipPosition="right" pTooltip="Drinks Available?"></p-checkbox>
+  <p-checkbox class="mt-2 mx-1" [binary]="true" label="Parking" formControlName="parking" tooltipPosition="right" pTooltip="Parking Available?"></p-checkbox>
+  </form>
+  <ng-template pTemplate="footer">
+  <p-button icon="pi pi-check" (click)="displayModalFill=false" label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
+  </p-dialog>
+</div>
+
+
+<div>
+  <p-dialog header="Header" class="line-height-4" [(visible)]="displayModalPrev" [modal]="true" [style]="{width: '50vw'}"[draggable]="false" [resizable]="false">
+  <p>Theme: {{eventForm.get('infoTheme')?.value}}</p>
+  <p>Date: {{eventForm.get('infoDate')?.value}}</p>
+  <p>Location: {{eventForm.get('location')?.value}}</p>
+  <p>Food: {{eventForm.get('food')?.value}}</p>
+  <!-- ############# I NEED TO ADD IF FOOD IS TRUE TO SHOW AVAILABLE INSTEAD OF TRUE -->
+  <p>Drinks: {{eventForm.get('drinks')?.value}}</p>
+  <p>Parking: {{eventForm.get('parking')?.value}}</p>
+  <ng-template pTemplate="footer">
+  <p-button icon="pi pi-check" (click)="displayModalPrev=false" label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
+  </p-dialog>
+</div>
