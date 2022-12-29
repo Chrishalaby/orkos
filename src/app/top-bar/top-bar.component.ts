@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
 
+  visibleSidebar: boolean = false;
   constructor() { }
 
   ngOnInit(): void {

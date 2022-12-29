@@ -1,13 +1,42 @@
-<section class="flex justify-content-between m-0 md:m-2">
+<section class="flex flex-row m-2 top-bar">
   <div>
-    <span class="p-input-icon-left">
-      <i class="pi pi-search"></i>
-      <input type="text" style="border-radius: 2rem;" pInputText placeholder="Search For Events, artists, locations..."/>
-    </span>
+    <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="10000">
+      <div class="flex flex-row">
+        <img src="../assets/images/custom/OrkosLogo.png" alt="Logo" class="w-3">
+        <a class="flex align-self-center text-5xl ml-3 font-bold" [routerLink]="['/']" style="text-decoration: none; color: white;"> Orkos</a>
+      </div>
+      <div class="flex flex-column mt-4">
+        <span class="flex flex-row">
+          <i class="pi pi-home flex align-self-center"></i>
+          <button pButton label="Home" class="p-button-text text-xl" [routerLink]="['/']"></button>
+        </span>
+
+        <p-button label="File Upload" styleClass="p-button-link" [routerLink]="['/files-upload']"></p-button>
+
+      </div>
+
+    </p-sidebar>
+    <button pButton type="button" class="p-button-outlined p-button-rounded" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
   </div>
 
-  <div class="">
-    <button pButton type="button" label="Sign up" class="p-button-outlined p-button-rounded p-button-secondary m-1"></button>
-    <button pButton type="button" label="Log in" class="p-button-outlined p-button-rounded m-1"></button>
+  <div class="flex justify-content-between w-12 ml-2">
+    <div class="w-5">
+      <span class="p-input-icon-left hideme">
+        <i class="pi pi-search"></i>
+        <input type="text" style="border-radius: 2rem; background-color: transparent;"  class="w-22rem"  pInputText placeholder="Search For Events, artists, locations..."/>
+      </span>
+      <button pButton type="button" class="p-button-outlined p-button-rounded p-button-secondary hidebig" (click)="visibleSidebar = true" icon="pi pi-search"></button>
+      <!-- ## NEED TO MAKE THIS BETTER  -->
+    </div>
+
+
+    <div class="">
+      <button pButton  type="button" label="Sign up" class="p-button-outlined p-button-rounded p-button-secondary mx-1 hideme"></button>
+      <button pButton  type="button" label="Log in" class="p-button-outlined p-button-rounded mx-1 hideme"></button>
+      <button pButton type="button" class="p-button-outlined p-button-rounded hidebig" (click)="visibleSidebar = true" icon="pi pi-user"></button>
+    </div>
+
   </div>
+
 </section>
+
