@@ -56,7 +56,7 @@
 
 
 <div>
-  <p-dialog header="Extra Information" [(visible)]="displayModalFill" [modal]="true" [style]="{width: '50vw'}"[draggable]="false" [resizable]="false">
+  <p-dialog header="Extra Information" [(visible)]="displayModalFill" [modal]="true" [style]="{width: '70vw'}"[draggable]="false" [resizable]="false">
   <form [formGroup]="eventForm" class="flex flex-column">
   <span class="p-float-label mt-4 mx-1">
     <input pInputText formControlName="infoTheme" tooltipPosition="right" pTooltip="Any specific theme? if not then write 'Casual'."/>
@@ -83,7 +83,7 @@
 
 
 <div>
-  <p-dialog header="Header" class="line-height-4" [(visible)]="displayModalPrev" [modal]="true" [style]="{width: '50vw'}"[draggable]="false" [resizable]="false">
+  <p-dialog header="Header" class="line-height-4" [(visible)]="displayModalPrev" [modal]="true" [style]="{width: '70vw'}"[draggable]="false" [resizable]="false">
   <p>Theme: {{eventForm.get('infoTheme')?.value}}</p>
   <p>Date: {{eventForm.get('infoDate')?.value}}</p>
   <p>Location: {{eventForm.get('location')?.value}}</p>
