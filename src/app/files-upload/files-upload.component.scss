@@ -37,3 +37,14 @@
   background: #FFCDD2;
   color: #c63737;
 }
+
+:host {
+  ::ng-deep {
+    .p-inputwrapper {
+      width: 100%;
+    }
+    .p-dropdown.p-component {
+      width: 100%;
+    }
+  }
+}

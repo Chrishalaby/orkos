@@ -1,0 +1,16 @@
+<p-card class="flex flex-column justify-content-center align-items-center align-self-center h-screen">
+  <h1 class="text-5xl">Login</h1>
+  <span class="p-float-label mt-6">
+    <input [style]="{'width':'100%'}" id="float-input" type="text" pInputText>
+    <label for="float-input">Email</label>
+  </span>
+  <span class="p-float-label mt-4">
+    <p-password [toggleMask]="true" [feedback]="false" styleClass="p-password p-component p-inputwrapper p-input-icon-right"></p-password>
+    <label for="float-input">Password</label>
+  </span>
+  <div class="flex flex-column align-items-center mt-3">
+    <button pButton class="text-center p-button-raised p-button-text" type="button" label="Sign In"></button>
+    <a class="text-sm mt-2" [routerLink]="['/reset-password']">Forgot your password?</a>
+    <a class="text-sm mt-1" [routerLink]="['/signup']">Create Account</a>
+  </div>
+</p-card>

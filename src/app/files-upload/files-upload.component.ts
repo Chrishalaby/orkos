@@ -28,9 +28,9 @@ export class FilesUploadComponent implements OnInit {
   image?: File;
   imageUrl: string | undefined;
   tickets = [
-    {name: 'limited'},
-    {name: 'available'},
-    {name: 'unavailable'}];
+    {name: 'Limited'},
+    {name: 'Available'},
+    {name: 'Unavailable'}];
   displayModalFill: boolean | undefined;
   displayModalPrev: boolean | undefined;
 

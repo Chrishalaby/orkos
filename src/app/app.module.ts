@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {CarouselModule} from 'primeng/carousel';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { TopBarComponent } from './Bar/top-bar/top-bar.component';
 import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ButtonModule} from 'primeng/button';
@@ -23,13 +22,35 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputMaskModule} from 'primeng/inputmask';
 import {CheckboxModule} from 'primeng/checkbox';
 import {TooltipModule} from 'primeng/tooltip';
+import { LoginComponent } from './user-login/login/login.component';
+import {PasswordModule} from 'primeng/password';
+import { SignupComponent } from './user-login/signup/signup.component';
+import {DividerModule} from 'primeng/divider';
+import {CardModule} from 'primeng/card';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducerToken, getInitialState, REDUCER_PROVIDER } from './app.store';
+import { PassResetComponent } from './user-login/pass-reset/pass-reset.component';
+import { PrivPolicyComponent } from './legal/priv-policy/priv-policy.component';
+import { TermServComponent } from './legal/term-serv/term-serv.component';
+import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
+import { SearchComponent } from './search/search.component';
+import { LowBarComponent } from './Bar/low-bar/low-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SideBarComponent,
     TopBarComponent,
     HomeComponent,
-    FilesUploadComponent
+    FilesUploadComponent,
+    LoginComponent,
+    SignupComponent,
+    PassResetComponent,
+    PrivPolicyComponent,
+    TermServComponent,
+    SearchComponent,
+    LowBarComponent
   ],
   imports: [
     BrowserModule,
@@ -50,10 +71,20 @@ import {TooltipModule} from 'primeng/tooltip';
     DropdownModule,
     InputMaskModule,
     CheckboxModule,
-    TooltipModule
+    TooltipModule,
+    DynamicDialogModule,
+    PasswordModule,
+    DividerModule,
+    CardModule,
+    StoreModule.forRoot(reducerToken, { initialState: getInitialState}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
 
   ],
-  providers: [MessageService],
+  providers: [MessageService, REDUCER_PROVIDER, DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

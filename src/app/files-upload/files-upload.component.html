@@ -1,5 +1,5 @@
-<section class="flex flex-column md:flex-row  justify-content-evenly mt-2 md:mt-6">
-  <form [formGroup]="eventForm" class="text-center">
+<section class="flex flex-column md:flex-row justify-content-evenly mt-6">
+  <form [formGroup]="eventForm" class="flex justify-content-center flex-column align-content-center align-items-center">
     <!-- ################################## (ngSubmit)="submit()"  to be filled later -->
     <h1 class="text-center mb-4">File Uploads</h1>
     <p-fileUpload name="myFile" accept="image/*" mode="basic" (onSelect)="onSelect($event)" chooseLabel="Upload Image"></p-fileUpload>
@@ -7,15 +7,11 @@
       <input id="float-input" type="text" pInputText formControlName="name">
       <label for="float-input">Event Name</label>
     </span>
-    <!-- ########### FIX THE FLOAT INPUTS NOT WORKING ON MOBILE VIEW !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
     <span class="p-float-label mt-4">
       <input id="float-input" type="text" pInputText formControlName="price">
       <label for="float-input">Price</label>
     </span>
-    <span class="p-float-label mt-4">
-      <p-dropdown [options]="tickets" formControlName="ticketAmount" placeholder="Ticket availability" optionLabel="name" optionValue="name"[showClear]="true"></p-dropdown>
-      <label for="dropdown">Tickets</label>
-    </span>
+    <p-dropdown [options]="tickets" formControlName="ticketAmount" placeholder="Ticket availability" class="mt-4" optionLabel="name" optionValue="name"[showClear]="true"></p-dropdown>
     <span class="p-float-label mt-4">
       <input id="float-input" type="text" pInputText formControlName="location">
       <label for="float-input">Location</label>
@@ -25,7 +21,7 @@
     </div>
   </form>
 
-  <p-carousel class="mt-2 md:mt-0" [value]="events" [numVisible]="1" [numScroll]="1" [circular]="true" [showIndicators]="true">
+  <p-carousel class="mt-4 md:mt-0" [value]="events" [numVisible]="1" [numScroll]="1" [circular]="true" [showIndicators]="true">
     <ng-template let-product pTemplate="item">
       <h1 class="mb-3 md:mb-6 text-center">Preview</h1>
       <div class="product-item">
@@ -36,8 +32,7 @@
               <div>
                   <h4 class="mb-1">{{product.name}}</h4>
                   <h4 class="mt-0 mb-3">${{product.price}}</h4>
-                  <span [class]="eventForm.get('inventoryStatus')?.value.toLowerCase()">Tickets: {{product.ticketAmount}}</span>
-                  <!-- ########### Fix color of tickets isnt working -->
+                  <span [class]="eventForm.get('ticketAmount')?.value.toLowerCase()" class="p-1">Tickets: {{product.ticketAmount}}</span>
                   <div class="product-description flex flex-row justify-content-center">
                     <i class="pi pi-map-marker"></i>
                     {{product.location}}

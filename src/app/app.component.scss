@@ -1,10 +1,41 @@
-// :host {
-//   ::ng-deep {
-//     .top-bar {
-//       position: sticky;
-//       top: 0;
-//       z-index: 1;
-//     }
-//   }
-// }
+:host {
+  ::ng-deep {
+    .top-bar-view{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+    }
+    .low-bar-view{
+      position: fixed;
+      bottom: 0;
+      z-index: 10;
+      width: 100%;
+    }
+  }
+}
 // Affecting my side bar for some reason????
+
+
+@media only screen and (max-width: 600px) {
+  /* Hide the sign up and log in buttons on mobile view */
+  .top-bar-view{
+    display: none;
+  }
+  .low-bar-view{
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  /* Show the sign up and log in buttons on desktop view */
+
+
+  /* Hide the search button on desktop view */
+  .top-bar-view{
+    display: block;
+  }
+  .low-bar-view{
+    display: none;
+  }
+}

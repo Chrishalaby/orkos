@@ -1,0 +1,42 @@
+<section class="flex flex-row top-bar surface-0 opacity-90">
+  <div c>
+    <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="5">
+      <div>
+        <div class="flex flex-row">
+          <img src="../assets/images/custom/OrkosLogo.png" alt="Logo" class="w-3">
+          <a class="flex align-self-center text-5xl ml-3 font-bold text-900" [routerLink]="['/']" style="text-decoration: none;"> Orkos</a>
+        </div>
+        <div class="flex flex-column mt-4">
+            <button pButton  class="p-button-text text-xl" [routerLink]="['/']">
+              <i class="pi pi-home flex align-self-center"></i>
+              <p class="pl-3 text-900">Home</p>
+            </button>
+            <button pButton class="p-button-text text-xl" [routerLink]="['/files-upload']">
+              <i class="pi pi-upload flex align-self-center"></i>
+              <p class="pl-3 text-900">File Upload</p>
+            </button>
+        </div>
+      </div>
+    </p-sidebar>
+    <button pButton type="button" class="p-button-outlined p-button-rounded mt-2" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
+  </div>
+
+  <div class="flex justify-content-between w-12 ml-2 mt-2">
+    <div class="w-5">
+      <span class="p-input-icon-left hideme">
+        <i class="pi pi-search"></i>
+        <input type="text" style="border-radius: 2rem; background-color: transparent;"  class="w-22rem"  pInputText placeholder="Search For Events, artists, locations..."/>
+      </span>
+
+    </div>
+
+
+    <div class="">
+      <button pButton  type="button" label="Sign up" [routerLink]="['/signup']" class="p-button-outlined p-button-rounded p-button-secondary mx-1 hideme"></button>
+      <button pButton  type="button" label="Log in" [routerLink]="['/login']" class="p-button-outlined p-button-rounded mx-1 hideme"></button>
+    </div>
+
+  </div>
+
+</section>
+
