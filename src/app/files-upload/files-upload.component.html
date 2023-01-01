@@ -1,25 +1,28 @@
-<section class="flex flex-column md:flex-row justify-content-evenly mt-6">
-  <form [formGroup]="eventForm" class="flex justify-content-center flex-column align-content-center align-items-center">
-    <!-- ################################## (ngSubmit)="submit()"  to be filled later -->
-    <h1 class="text-center mb-4">File Uploads</h1>
-    <p-fileUpload name="myFile" accept="image/*" mode="basic" (onSelect)="onSelect($event)" chooseLabel="Upload Image"></p-fileUpload>
-    <span class="p-float-label mt-4">
-      <input id="float-input" type="text" pInputText formControlName="name">
-      <label for="float-input">Event Name</label>
-    </span>
-    <span class="p-float-label mt-4">
-      <input id="float-input" type="text" pInputText formControlName="price">
-      <label for="float-input">Price</label>
-    </span>
-    <p-dropdown [options]="tickets" formControlName="ticketAmount" placeholder="Ticket availability" class="mt-4" optionLabel="name" optionValue="name"[showClear]="true"></p-dropdown>
-    <span class="p-float-label mt-4">
-      <input id="float-input" type="text" pInputText formControlName="location">
-      <label for="float-input">Location</label>
-    </span>
-    <div class="more-buttons mt-2">
-      <button pButton type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-outlined" (click)="showModalFill()"></button>
-    </div>
-  </form>
+<section class="flex flex-column md:flex-row justify-content-evenly mt-0 md:mt-6">
+  <p-card>
+    <form [formGroup]="eventForm" class="flex justify-content-center flex-column align-content-center align-items-center m-4">
+      <!-- ################################## (ngSubmit)="submit()"  to be filled later -->
+      <h1 class="text-center mb-4">File Uploads</h1>
+      <p-fileUpload name="myFile" accept="image/*" mode="basic" (onSelect)="onSelect($event)" chooseLabel="Upload Image"></p-fileUpload>
+      <span class="p-float-label mt-4">
+        <input id="float-input" type="text" pInputText formControlName="name">
+        <label for="float-input">Event Name</label>
+      </span>
+      <span class="p-float-label mt-4">
+        <input id="float-input" type="text" pInputText formControlName="price">
+        <label for="float-input">Price</label>
+      </span>
+      <p-dropdown [options]="tickets" formControlName="ticketAmount" placeholder="Ticket availability" class="mt-4 max-w-14rem" optionLabel="name" optionValue="name"[showClear]="true"></p-dropdown>
+      <span class="p-float-label mt-4">
+        <input id="float-input" type="text" pInputText formControlName="location">
+        <label for="float-input">Location</label>
+      </span>
+      <div class="more-buttons mt-2">
+        <button pButton pRipple type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-outlined" (click)="showModalFill()"></button>
+      </div>
+    </form>
+  </p-card>
+
 
   <p-carousel class="mt-4 md:mt-0" [value]="events" [numVisible]="1" [numScroll]="1" [circular]="true" [showIndicators]="true">
     <ng-template let-product pTemplate="item">
@@ -38,9 +41,9 @@
                     {{product.location}}
                   </div>
                   <div class="more-buttons mt-2">
-                    <button pButton type="button" icon="pi pi-shopping-cart" class="p-button-outlined p-button-rounded mr-2"></button>
-                    <button pButton type="button" icon="pi pi-star-fill" class="p-button-rounded p-button-success p-button-outlined mr-2" ></button>
-                    <button pButton type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-outlined" (click)="showModalPreview()"></button>
+                    <button pButton pRipple type="button" icon="pi pi-shopping-cart" class="p-button-outlined p-button-rounded mr-2"></button>
+                    <button pButton pRipple type="button" icon="pi pi-star-fill" class="p-button-rounded p-button-success p-button-outlined mr-2" ></button>
+                    <button pButton pRipple type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-outlined" (click)="showModalPreview()"></button>
                   </div>
               </div>
           </div>
@@ -82,10 +85,10 @@
   <p>Theme: {{eventForm.get('infoTheme')?.value}}</p>
   <p>Date: {{eventForm.get('infoDate')?.value}}</p>
   <p>Location: {{eventForm.get('location')?.value}}</p>
-  <p>Food: {{eventForm.get('food')?.value}}</p>
+  <p>Food: {{(eventForm.get('food')?.value)? 'Available' : 'Unavailable'}}</p>
   <!-- ############# I NEED TO ADD IF FOOD IS TRUE TO SHOW AVAILABLE INSTEAD OF TRUE -->
-  <p>Drinks: {{eventForm.get('drinks')?.value}}</p>
-  <p>Parking: {{eventForm.get('parking')?.value}}</p>
+  <p>Drinks: {{(eventForm.get('drinks')?.value)? 'Available' : 'Unavailable'}}</p>
+  <p>Parking: {{(eventForm.get('parking')?.value)? 'Available' : 'Unavailable'}}</p>
   <ng-template pTemplate="footer">
   <p-button icon="pi pi-check" (click)="displayModalPrev=false" label="Ok" styleClass="p-button-text"></p-button>
   </ng-template>

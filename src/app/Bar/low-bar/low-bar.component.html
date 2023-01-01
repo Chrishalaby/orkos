@@ -7,11 +7,11 @@
           <a class="flex align-self-center text-5xl ml-3 font-bold text-900" [routerLink]="['/']" style="text-decoration: none;"> Orkos</a>
         </div>
         <div class="flex flex-column mt-4">
-            <button pButton  class="p-button-text text-xl" [routerLink]="['/']">
+            <button pButton pRipple class="p-button-text text-xl" [routerLink]="['/']">
               <i class="pi pi-home flex align-self-center"></i>
               <p class="pl-3 text-900">Home</p>
             </button>
-            <button pButton class="p-button-text text-xl" [routerLink]="['/files-upload']">
+            <button pButton pRipple class="p-button-text text-xl" [routerLink]="['/files-upload']">
               <i class="pi pi-upload flex align-self-center"></i>
               <p class="pl-3 text-900">File Upload</p>
             </button>
@@ -20,10 +20,10 @@
     </p-sidebar>
 
 
-    <button pButton type="button" class="p-button-outlined p-button-rounded m-2" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
+    <button pButton pRipple type="button" class="p-button-outlined p-button-rounded m-2" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
   </div>
 
-  <button pButton type="button" class="p-button-outlined p-button-rounded p-button-secondary hidebig m-2" icon="pi pi-search"></button>
-  <button pButton type="button" class="p-button-outlined p-button-rounded hidebig m-2" [routerLink]="['/login']" icon="pi pi-user"></button>
+  <button pButton pRipple type="button" class="p-button-outlined p-button-rounded p-button-secondary hidebig m-2" [routerLink]="['/SearchBar']" icon="pi pi-search"></button>
+  <button pButton pRipple type="button" class="p-button-outlined p-button-rounded hidebig m-2" [routerLink]="['/login']" icon="pi pi-user"></button>
 </section>
 

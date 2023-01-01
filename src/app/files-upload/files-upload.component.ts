@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {Message,MessageService} from 'primeng/api';
 
@@ -24,7 +24,7 @@ export class FilesUploadComponent implements OnInit {
   events: Event[] = [];
   uploadedFiles: any[] = [];
   textValue: string | undefined;
-  eventForm: FormGroup;
+  eventForm!: FormGroup;
   image?: File;
   imageUrl: string | undefined;
   tickets = [
@@ -34,21 +34,12 @@ export class FilesUploadComponent implements OnInit {
   displayModalFill: boolean | undefined;
   displayModalPrev: boolean | undefined;
 
-  constructor(private formBuilder: FormBuilder, private messageService: MessageService) {
-    this.eventForm = this.formBuilder.group({
-      name: '',
-      price: '',
-      ticketAmount: '',
-      location: '',
-      infoTheme: '',
-      infoDate: '',
-      food: '',
-      drinks: '',
-      parking: '',
-    });
-    this.eventForm.valueChanges.subscribe((event) => {
-      this.events = [event]
-    });
+  constructor(
+    private formBuilder: FormBuilder,
+    private messageService: MessageService,
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    ) {
+
   }
 
   onSelect(event: { files: (File | undefined)[]; }) {
@@ -63,6 +54,22 @@ export class FilesUploadComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.eventForm = this.formBuilder.group({
+      name: '',
+      price: '',
+      ticketAmount: '',
+      location: '',
+      infoTheme: '',
+      infoDate: '',
+      food: '',
+      drinks: '',
+      parking: '',
+    });
+    this.events = [this.eventForm.value];
+    this.eventForm.valueChanges.subscribe((event) => {
+      this.events = [event]
+    });
+    // this.changeDetectorRef.detectChanges();
   }
   showModalFill() {
     this.displayModalFill = true;

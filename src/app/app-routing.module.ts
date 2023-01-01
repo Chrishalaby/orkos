@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SearchBarComponent } from './Bar/search-bar/search-bar.component';
 import { FilesUploadComponent } from './files-upload/files-upload.component';
 import { HomeComponent } from './home/home.component';
 import { PrivPolicyComponent } from './legal/priv-policy/priv-policy.component';
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'TermServ',
     component: TermServComponent
+  },
+  {
+    path: 'SearchBar',
+    component: SearchBarComponent
   },
   {
     path: '**',

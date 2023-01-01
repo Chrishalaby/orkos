@@ -36,8 +36,11 @@ import { PassResetComponent } from './user-login/pass-reset/pass-reset.component
 import { PrivPolicyComponent } from './legal/priv-policy/priv-policy.component';
 import { TermServComponent } from './legal/term-serv/term-serv.component';
 import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
-import { SearchComponent } from './search/search.component';
 import { LowBarComponent } from './Bar/low-bar/low-bar.component';
+import { SearchBarComponent } from './Bar/search-bar/search-bar.component';
+import { RippleModule } from 'primeng/ripple';
+import { ChipModule } from 'primeng/chip';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,8 +52,8 @@ import { LowBarComponent } from './Bar/low-bar/low-bar.component';
     PassResetComponent,
     PrivPolicyComponent,
     TermServComponent,
-    SearchComponent,
-    LowBarComponent
+    LowBarComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,8 @@ import { LowBarComponent } from './Bar/low-bar/low-bar.component';
     PasswordModule,
     DividerModule,
     CardModule,
+    ChipModule,
+    RippleModule,
     StoreModule.forRoot(reducerToken, { initialState: getInitialState}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
