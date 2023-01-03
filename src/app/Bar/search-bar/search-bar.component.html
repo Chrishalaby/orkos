@@ -3,13 +3,8 @@
     <i class="pi pi-search"></i>
     <input type="text"  class="w-full" [formControl]="searchControl" (input)="filterResults()"  pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;"/>
   </span>
-  <div *ngIf="searchTerm">
-    <div *ngFor="let product of filterResults()">
-      {{ product.name }}
-    </div>
-  </div>
 
-  <div class="flex justify-content-evenly flex-wrap mt-1">
+  <div class="flex justify-content-evenly flex-wrap mt-1" *ngIf="searchTerm == null">
     <button pButton pRipple type="button" class="p-button-outlined m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
     <!-- <img src="assets/images/search/partyimg.png" class="max-w-6rem"> -->
     <button pButton pRipple type="button" class="p-button-outlined m-2 w-5 flex justify-content-center"><img src="assets/images/search/bar21.png" class="max-w-3rem"></button>
@@ -21,6 +16,33 @@
     <img src="assets/images/home/flyer5.png" class="w-5 m-2">
     <img src="assets/images/home/flyer6.png" class="w-5 m-2"> -->
   </div>
-
-
+  <div *ngIf="searchTerm" class="m-2">
+    <!-- product-item -->
+    <div *ngFor="let product of filterResults()" class="flex flex-row justify-content-between mb-2">
+      <!-- ############## ADD THE HOVER EFFECT TO ONE OF THE TIMES INSTEAD OF ALL -->
+      <!-- [ngClass]="{'hover-class': hover}" (mouseenter)="hover = true" (mouseleave)="hover = false" -->
+      <div class="flex flex-row">
+        <div>
+          <!-- class="image-container" -->
+          <img src="assets/images/home/{{product.image}}" [alt]="product.name" class=" max-h-4rem max-w-3rem"/>
+          <!-- product-image -->
+        </div>
+        <div class="flex flex-column pl-2">
+          <!-- product-list-detail -->
+          <h3 class="mb-2">{{product.name}}</h3>
+          <div>
+            <i class="pi pi-tag"></i>
+            <!-- product-category-icon -->
+            <span class="pl-1">Category</span>
+            <!-- class="product-category" -->
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-column">
+        <!-- product-list-action -->
+        <p class="mb-2 text-right font-bold">${{product.price}}</p>
+        <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()" class="px-1">{{product.inventoryStatus}}</span>
+      </div>
+    </div>
+  </div>
 </section>

@@ -19,10 +19,10 @@
 
 @media only screen and (max-width: 600px) {
   /* Hide the sign up and log in buttons on mobile view */
-  .top-bar-view{
+  .desk-view{
     display: none;
   }
-  .low-bar-view{
+  .mobile-view{
     display: block;
   }
 }
@@ -32,10 +32,10 @@
 
 
   /* Hide the search button on desktop view */
-  .top-bar-view{
+  .desk-view{
     display: block;
   }
-  .low-bar-view{
+  .mobile-view{
     display: none;
   }
 }

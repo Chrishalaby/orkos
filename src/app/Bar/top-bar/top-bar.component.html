@@ -23,18 +23,19 @@
 
   <div class="flex justify-content-between w-12 ml-2 m-2">
     <div class="w-5">
-      <span class="p-input-icon-left hideme">
+      <span class="p-input-icon-left">
         <i class="pi pi-search"></i>
         <input type="text" class="w-22rem" (click)="op.toggle($event)" [formControl]="searchControl" (input)="filterResults()"  pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;" />
       </span>
       <p-overlayPanel #op>
         <ng-template pTemplate>
-          <div *ngIf="searchTerm" class="product-item w-30rem">
+          <div *ngIf="searchTerm" class="w-30rem">
+            <!-- product-item  -->
             <div *ngFor="let product of filterResults()" class="flex flex-row justify-content-between mb-2">
               <div class="flex flex-row">
                 <div>
                   <!-- class="image-container" -->
-                  <img src="assets/images/home/{{product.image}}" [alt]="product.name" class=" max-h-4rem max-w-3rem"/>
+                  <img src="assets/images/home/{{product.image}}" [alt]="product.name" class="max-h-4rem max-w-3rem"/>
                   <!-- product-image -->
                 </div>
                 <div class="flex flex-column pl-2">
@@ -43,14 +44,14 @@
                   <div>
                     <i class="pi pi-tag"></i>
                     <!-- product-category-icon -->
-                    <span>Category</span>
+                    <span class="pl-1">Category</span>
                     <!-- class="product-category" -->
                   </div>
                 </div>
               </div>
               <div class="flex flex-column">
                 <!-- product-list-action -->
-                <p class="mb-2 text-right">${{product.price}}</p>
+                <p class="mb-2 text-right font-bold">${{product.price}}</p>
                 <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()" class="px-1">{{product.inventoryStatus}}</span>
               </div>
             </div>
@@ -61,8 +62,8 @@
 
 
     <div class="">
-      <button pButton pRipple  type="button" label="Sign up" [routerLink]="['/signup']" class="p-button-outlined p-button-rounded p-button-secondary mx-1 hideme"></button>
-      <button pButton pRipple  type="button" label="Log in" [routerLink]="['/login']" class="p-button-outlined p-button-rounded mx-1 hideme"></button>
+      <button pButton pRipple  type="button" label="Sign up" [routerLink]="['/signup']" class="p-button-outlined p-button-rounded p-button-secondary mx-1"></button>
+      <button pButton pRipple  type="button" label="Log in" [routerLink]="['/login']" class="p-button-outlined p-button-rounded mx-1"></button>
     </div>
 
   </div>

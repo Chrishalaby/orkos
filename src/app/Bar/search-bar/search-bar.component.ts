@@ -22,6 +22,7 @@ export class SearchBarComponent implements OnInit {
 
 
   products: Product[] = [];
+  // hover: any;
 
   filterResults() {
     const searchTerm = this.searchTerm ?? '';
