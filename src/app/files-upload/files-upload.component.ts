@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {Message,MessageService} from 'primeng/api';
 
 export interface Event {
   name: string;
@@ -34,13 +33,7 @@ export class FilesUploadComponent implements OnInit {
   displayModalFill: boolean | undefined;
   displayModalPrev: boolean | undefined;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private messageService: MessageService,
-    private readonly changeDetectorRef: ChangeDetectorRef,
-    ) {
-
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   onSelect(event: { files: (File | undefined)[]; }) {
     this.image = event.files[0];

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 export interface Product {
   image: string,
@@ -40,7 +39,7 @@ export class HomeComponent implements OnInit {
 }];
   displayModal: boolean | undefined;
 
-  constructor(private readonly httpClient: HttpClient, private router: Router) {
+  constructor(private readonly httpClient: HttpClient) {
   }
 
   ngOnInit() {

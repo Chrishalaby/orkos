@@ -3,7 +3,7 @@
     <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="5">
       <div>
         <div class="flex flex-row">
-          <img src="../assets/images/custom/OrkosLogo.png" alt="Logo" class="w-3">
+          <img src="../assets/images/home/OrkosLogo.png" alt="Logo" class="w-3">
           <a class="flex align-self-center text-5xl ml-3 font-bold text-900" [routerLink]="['/']" style="text-decoration: none;"> Orkos</a>
         </div>
         <div class="flex flex-column mt-4">
@@ -25,9 +25,38 @@
     <div class="w-5">
       <span class="p-input-icon-left hideme">
         <i class="pi pi-search"></i>
-        <input type="text" style="border-radius: 2rem; background-color: transparent;"  class="w-22rem"  pInputText placeholder="Search For Events, artists, locations..."/>
+        <input type="text" class="w-22rem" (click)="op.toggle($event)" [formControl]="searchControl" (input)="filterResults()"  pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;" />
       </span>
-
+      <p-overlayPanel #op>
+        <ng-template pTemplate>
+          <div *ngIf="searchTerm" class="product-item w-30rem">
+            <div *ngFor="let product of filterResults()" class="flex flex-row justify-content-between mb-2">
+              <div class="flex flex-row">
+                <div>
+                  <!-- class="image-container" -->
+                  <img src="assets/images/home/{{product.image}}" [alt]="product.name" class=" max-h-4rem max-w-3rem"/>
+                  <!-- product-image -->
+                </div>
+                <div class="flex flex-column pl-2">
+                  <!-- product-list-detail -->
+                  <h3 class="mb-2">{{product.name}}</h3>
+                  <div>
+                    <i class="pi pi-tag"></i>
+                    <!-- product-category-icon -->
+                    <span>Category</span>
+                    <!-- class="product-category" -->
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-column">
+                <!-- product-list-action -->
+                <p class="mb-2">${{product.price}}</p>
+                <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()" class="px-1">{{product.inventoryStatus}}</span>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-overlayPanel>
     </div>
 
 

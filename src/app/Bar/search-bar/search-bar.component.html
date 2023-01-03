@@ -1,16 +1,25 @@
 <section class="text-center">
   <span class="p-input-icon-left w-10 mt-2">
     <i class="pi pi-search"></i>
-    <input type="text" style="border-radius: 2rem; background-color: transparent;" class="w-full"  pInputText placeholder="Search For Events, artists, locations..."/>
+    <input type="text"  class="w-full" [formControl]="searchControl" (input)="filterResults()"  pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;"/>
   </span>
+  <div *ngIf="searchTerm">
+    <div *ngFor="let product of filterResults()">
+      {{ product.name }}
+    </div>
+  </div>
+
   <div class="flex justify-content-evenly flex-wrap mt-1">
-    <button pButton pRipple type="button" label="Bars" class="p-button-outlined m-2 w-5"></button>
-    <img src="assets/images/custom/flyer1.png" class="m-2 w-5">
-    <img src="assets/images/custom/flyer2.png" class="m-2 w-5">
-    <img src="assets/images/custom/flyer3.png" class="m-2 w-5">
-    <img src="assets/images/custom/flyer4.png" class="w-5 m-2">
-    <img src="assets/images/custom/flyer5.png" class="w-5 m-2">
-    <img src="assets/images/custom/flyer6.png" class="w-5 m-2">
+    <button pButton pRipple type="button" class="p-button-outlined m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
+    <!-- <img src="assets/images/search/partyimg.png" class="max-w-6rem"> -->
+    <button pButton pRipple type="button" class="p-button-outlined m-2 w-5 flex justify-content-center"><img src="assets/images/search/bar21.png" class="max-w-3rem"></button>
+    <button pButton pRipple type="button" class="p-button-outlined m-2 w-5 flex justify-content-center"><img src="assets/images/search/karaoke.png" class="max-w-3rem"></button>
+    <!-- <img src="assets/images/home/flyer1.png" class="m-2 w-5">
+    <img src="assets/images/home/flyer2.png" class="m-2 w-5">
+    <img src="assets/images/home/flyer3.png" class="m-2 w-5">
+    <img src="assets/images/home/flyer4.png" class="w-5 m-2">
+    <img src="assets/images/home/flyer5.png" class="w-5 m-2">
+    <img src="assets/images/home/flyer6.png" class="w-5 m-2"> -->
   </div>
 
 

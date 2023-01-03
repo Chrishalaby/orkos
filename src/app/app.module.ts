@@ -40,6 +40,7 @@ import { LowBarComponent } from './Bar/low-bar/low-bar.component';
 import { SearchBarComponent } from './Bar/search-bar/search-bar.component';
 import { RippleModule } from 'primeng/ripple';
 import { ChipModule } from 'primeng/chip';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { ChipModule } from 'primeng/chip';
     CheckboxModule,
     TooltipModule,
     DynamicDialogModule,
+    OverlayPanelModule,
     PasswordModule,
     DividerModule,
     CardModule,
