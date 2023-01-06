@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { Carousel } from 'primeng/carousel';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,9 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent {
   title = 'orkos';
-  constructor(private primengConfig: PrimeNGConfig) {}
+  constructor(private primengConfig: PrimeNGConfig) {
+    Carousel.prototype.onTouchMove = () => { };
+  }
   ngOnInit(){
     this.primengConfig.ripple = true;
   }

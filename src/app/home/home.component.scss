@@ -27,3 +27,18 @@
   padding: .25em .5rem;
   text-transform: uppercase;
 }
+
+.product-badge.status-limited {
+  background: #FEEDAF;
+  color: #8a5340;
+}
+
+.product-badge.status-available {
+  background: #C8E6C9;
+  color: #256029;
+}
+
+.product-badge.status-unavailable {
+  background: #FFCDD2;
+  color: #c63737;
+}

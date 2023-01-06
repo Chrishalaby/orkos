@@ -1,14 +1,24 @@
-<section class="text-center">
-  <span class="p-input-icon-left w-10 mt-2">
+<form class="text-center" [formGroup]="searchFormGroup" class="h-screen" >
+  <span class="p-input-icon-left w-10 mt-2 ml-5">
     <i class="pi pi-search"></i>
-    <input type="text"  class="w-full" [formControl]="searchControl" (input)="filterResults()"  pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;"/>
+    <input type="text"  class="w-full" [formControlName]="'search'" pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;"/>
   </span>
 
-  <div class="flex justify-content-evenly flex-wrap mt-1" *ngIf="searchTerm == null">
-    <button pButton pRipple type="button" class="p-button-outlined m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
+  <div class="flex justify-content-evenly flex-wrap mt-1" *ngIf="!this.searchFormGroup.get('search')?.value">
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
     <!-- <img src="assets/images/search/partyimg.png" class="max-w-6rem"> -->
-    <button pButton pRipple type="button" class="p-button-outlined m-2 w-5 flex justify-content-center"><img src="assets/images/search/bar21.png" class="max-w-3rem"></button>
-    <button pButton pRipple type="button" class="p-button-outlined m-2 w-5 flex justify-content-center"><img src="assets/images/search/karaoke.png" class="max-w-3rem"></button>
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/bar21.png" class="max-w-3rem"></button>
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/karaoke.png" class="max-w-3rem"></button>
+
+
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
+    <button pButton pRipple type="button" class="p-button-raised p-button-text m-2 w-5 flex justify-content-center"><img src="assets/images/search/party21.png" class="max-w-3rem"></button>
+
     <!-- <img src="assets/images/home/flyer1.png" class="m-2 w-5">
     <img src="assets/images/home/flyer2.png" class="m-2 w-5">
     <img src="assets/images/home/flyer3.png" class="m-2 w-5">
@@ -16,9 +26,9 @@
     <img src="assets/images/home/flyer5.png" class="w-5 m-2">
     <img src="assets/images/home/flyer6.png" class="w-5 m-2"> -->
   </div>
-  <div *ngIf="searchTerm" class="m-2">
+  <div *ngIf="this.searchFormGroup.get('search')?.value" class="m-2">
     <!-- product-item -->
-    <div *ngFor="let product of filterResults()" class="flex flex-row justify-content-between mb-2">
+    <div *ngFor="let product of filteredEvents" class="flex flex-row justify-content-between mb-2">
       <!-- ############## ADD THE HOVER EFFECT TO ONE OF THE TIMES INSTEAD OF ALL -->
       <!-- [ngClass]="{'hover-class': hover}" (mouseenter)="hover = true" (mouseleave)="hover = false" -->
       <div class="flex flex-row">
@@ -45,4 +55,4 @@
       </div>
     </div>
   </div>
-</section>
+</form>
