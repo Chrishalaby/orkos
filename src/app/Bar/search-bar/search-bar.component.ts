@@ -26,7 +26,7 @@ export class SearchBarComponent implements OnInit {
     this.httpClient.get<any>('assets/products.json').pipe(tap((events: any) => { this.events = events.data; this.filteredEvents = events.data })).subscribe();
     this.searchFormGroup = this.formBuilder.group({
       'search': ['']
-    })
+    });
 
     this.searchFormGroup.get('search')?.valueChanges.pipe(
       tap((value: string) => {
@@ -35,26 +35,7 @@ export class SearchBarComponent implements OnInit {
     ).subscribe();
   }
 
-  // searchControl = new FormControl('');
-  // searchResults: string[] = [];
-  // searchTerm: string |null| undefined
-
-
-  // products: Product[] = [];
-  // // hover: any;
-
   filterResults(searchTerm: string): void {
     this.filteredEvents = this.events.filter(events => events.name.toLowerCase().includes(searchTerm.toLowerCase()));
   }
-
-  // constructor(private readonly httpClient: HttpClient) {}
-
-  // ngOnInit(): void {
-  //   this.httpClient.get<any>('assets/products.json').pipe(tap((products: any) => { this.products = products.data; })).subscribe();
-  //   this.searchControl.valueChanges.subscribe(value => {
-  //     this.searchTerm = value;
-  //   });
-  // }
-
-
 }

@@ -1,4 +1,4 @@
-<section class="flex flex-row top-bar surface-0 opacity-90">
+<section class="flex flex-row top-bar surface-0 opacity-90" >
   <div>
     <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="5">
       <div>
@@ -21,17 +21,17 @@
     <button pButton pRipple type="button" class="p-button-raised p-button-text p-button-rounded mt-2" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
   </div>
 
-  <div class="flex justify-content-between w-12 ml-2 m-2">
+  <div class="flex justify-content-between w-12 ml-2 m-2" [formGroup]="searchFormGroup">
     <div class="w-5">
       <span class="p-input-icon-left">
         <i class="pi pi-search"></i>
-        <input type="text" class="w-22rem" (click)="op.toggle($event)" [formControl]="searchControl" (input)="filterResults()"  pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;" />
+        <input type="text" class="w-22rem" (click)="op.toggle($event)" [formControlName]="'search'" pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;" />
       </span>
       <p-overlayPanel #op [baseZIndex]="15">
         <ng-template pTemplate>
-          <div *ngIf="searchTerm" class="w-30rem">
+          <div *ngIf="this.searchFormGroup.get('search')?.value" class="w-30rem">
             <!-- product-item  -->
-            <div *ngFor="let product of filterResults()" class="flex flex-row justify-content-between mb-2" >
+            <div *ngFor="let product of filteredEvents" class="flex flex-row justify-content-between mb-2" >
               <div class="flex flex-row ">
                 <div>
                   <!-- class="image-container" -->

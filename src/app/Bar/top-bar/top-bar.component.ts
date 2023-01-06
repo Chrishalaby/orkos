@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { tap } from 'rxjs';
 
-export interface Product {
+export interface Event {
   image: string,
   name: string,
   price: number,
@@ -18,25 +18,26 @@ export interface Product {
 export class TopBarComponent implements OnInit {
 
   visibleSidebar: boolean = false;
-  searchControl = new FormControl('');
-  searchResults: string[] = [];
-  searchTerm: string |null| undefined
 
-
-  products: Product[] = [];
-
-  filterResults() {
-    const searchTerm = this.searchTerm ?? '';
-    return this.products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()));
-  }
-
-  constructor(private readonly httpClient: HttpClient) { }
+  searchFormGroup!: FormGroup;
+  events: Event[] = []
+  filteredEvents: Event[] = []
+  constructor(private readonly formBuilder: FormBuilder, private readonly httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.httpClient.get<any>('assets/products.json').pipe(tap((products: any) => { this.products = products.data; })).subscribe();
-    this.searchControl.valueChanges.subscribe(value => {
-      this.searchTerm = value;
+    this.httpClient.get<any>('assets/products.json').pipe(tap((events: any) => {this.events = events.data;})).subscribe()
+    this.searchFormGroup = this.formBuilder.group({
+      'search': ''
     });
+
+    this.searchFormGroup.get('search')?.valueChanges.pipe(
+      tap((value: string) => {
+        this.filterResults(value);
+      })
+    ).subscribe();
   }
 
+  filterResults(searchTerm: string): void {
+    this.filteredEvents = this.events.filter(events => events.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  }
 }
