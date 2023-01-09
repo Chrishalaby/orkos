@@ -16,7 +16,12 @@
 .height-fix{
   height: 84vh !important;
 }
+@media only screen and (max-width: 800px) {
+  .logo-show{
+    display: none;
 
+  }
+}
 // .product-item {
 //   display: flex;
 //   align-items: center;

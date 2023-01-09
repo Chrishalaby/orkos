@@ -1,32 +1,18 @@
-<section class="flex flex-row top-bar surface-0 opacity-90" >
-  <div>
-    <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="5">
-      <div class="height-fix">
-        <div class="flex flex-row">
-          <img src="../assets/images/home/OrkosLogo.png" alt="Logo" class="w-3">
-          <a class="flex align-self-center text-5xl ml-3 font-bold text-900" [routerLink]="['/']" style="text-decoration: none;"> Orkos</a>
-        </div>
-        <div class="flex flex-column mt-4">
-            <button pButton pRipple  class="p-button-text text-xl" (click)="closeSidebar()" [routerLink]="['/']">
-              <i class="pi pi-home flex align-self-center"></i>
-              <p class="pl-3 text-900">Home</p>
-            </button>
-            <button pButton pRipple class="p-button-text text-xl" (click)="closeSidebar()" [routerLink]="['/files-upload']">
-              <i class="pi pi-upload flex align-self-center"></i>
-              <p class="pl-3 text-900">File Upload</p>
-            </button>
-        </div>
-      </div>
-      <button pButton pRipple class="p-button-text" (click)="closeSidebar()" [routerLink]="['/TermServ']">LEGAL</button>
-    </p-sidebar>
-    <button pButton pRipple type="button" class="p-button-raised p-button-text p-button-rounded mt-2" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
-  </div>
+<section class="flex flex-row top-bar surface-0 opacity-90">
 
-  <div class="flex justify-content-between w-12 ml-2 m-2" [formGroup]="searchFormGroup">
-    <div class="w-5">
-      <span class="p-input-icon-left">
-        <i class="pi pi-search"></i>
-        <input type="text" class="w-22rem" (click)="op.toggle($event)" [formControlName]="'search'" pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;" />
+
+  <button pButton pRipple type="button" class="p-button-raised p-button-text p-button-rounded mt-5 ml-5" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
+
+
+  <div class="flex justify-content-between w-full m-2 mr-5" [formGroup]="searchFormGroup">
+    <div class="flex flex-row mt-3 ml-5">
+      <img src="../assets/images/home/OrkosLogo.png" alt="Logo" class="w-5 h-3rem logo-show">
+      <a class="text-5xl ml-3 font-bold text-900 logo-show" [routerLink]="['/']" style="text-decoration: none;"> Orkos</a>
+    </div>
+    <div class="w-5 mt-4">
+      <span class="p-input-icon-left w-9">
+        <i class="pi pi-search w-1"></i>
+        <input type="text" class="lg:w-12" (click)="op.toggle($event)" [formControlName]="'search'" pInputText placeholder="Search For Events, artists, locations..." style="border-radius: 2rem; background-color: transparent;" />
       </span>
       <p-overlayPanel #op [baseZIndex]="15">
         <ng-template pTemplate>
@@ -64,12 +50,33 @@
     </div>
 
 
-    <div>
-      <button pButton pRipple  type="button" label="Sign up" [routerLink]="['/signup']" class="p-button-raised p-button-text p-button-rounded p-button-secondary mx-1"></button>
-      <button pButton pRipple  type="button" label="Log in" [routerLink]="['/login']" class="p-button-raised p-button-text p-button-rounded mx-1"></button>
+    <div class="mt-4">
+      <button pButton pRipple type="button" label="Sign up" [routerLink]="['/signup']" class="p-button-raised p-button-text p-button-rounded p-button-secondary mx-1"></button>
+      <button pButton pRipple type="button" label="Log in" [routerLink]="['/login']" class="p-button-raised p-button-text p-button-rounded mx-1" style="background-color: #0c2a59; color: white;"></button>
     </div>
 
   </div>
 
 </section>
 
+<div>
+  <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="5">
+    <div class="height-fix">
+      <div class="flex flex-row">
+        <img src="../assets/images/home/OrkosLogo.png" alt="Logo" class="w-3">
+        <a class="flex align-self-center text-5xl ml-3 font-bold text-900" [routerLink]="['/']" style="text-decoration: none;"> Orkos</a>
+      </div>
+      <div class="flex flex-column mt-4">
+          <button pButton pRipple  class="p-button-text text-xl" (click)="closeSidebar()" [routerLink]="['/']">
+            <i class="pi pi-home flex align-self-center"></i>
+            <p class="pl-3 text-900">Home</p>
+          </button>
+          <button pButton pRipple class="p-button-text text-xl" (click)="closeSidebar()" [routerLink]="['/files-upload']">
+            <i class="pi pi-upload flex align-self-center"></i>
+            <p class="pl-3 text-900">File Upload</p>
+          </button>
+      </div>
+    </div>
+    <button pButton pRipple class="p-button-text" (click)="closeSidebar()" [routerLink]="['/TermServ']">LEGAL</button>
+  </p-sidebar>
+</div>
