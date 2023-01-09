@@ -5,49 +5,84 @@
       "name":"Summer Here",
       "price":10,
       "inventoryStatus":"Available",
-      "description":"Beirut, Hamra Square"
+      "location":"Beirut, Hamra Square",
+      "infoTheme":"Under the Sea",
+      "infoDate":"Date",
+      "food": false,
+      "drinks":true,
+      "parking":true
     },
     {
       "image":"flyer2.png",
       "name":"All Night Long",
       "price":15,
       "inventoryStatus":"Limited",
-      "description":"Dbayeh Beach, Avenue XYZ"
+      "location":"Dbayeh Beach, Avenue XYZ",
+      "infoTheme":"Classic",
+      "infoDate":"Date",
+      "food": false,
+      "drinks":true,
+      "parking":true
     },
     {
       "image":"flyer3.png",
       "name":"Going Down",
       "price":20,
       "inventoryStatus":"Unavailable",
-      "description":"Burj Hammoud, ABC Street"
+      "location":"Burj Hammoud, ABC Street",
+      "infoTheme":"Wedding",
+      "infoDate":"Date",
+      "food": false,
+      "drinks":true,
+      "parking":true
     },
     {
       "image":"flyer4.png",
       "name":"Summer Here",
       "price":10,
       "inventoryStatus":"Available",
-      "description":"Beirut, Hamra Square"
+      "location":"Beirut, Hamra Square",
+      "infoTheme":"Beach",
+      "infoDate":"Date",
+      "food": false,
+      "drinks":true,
+      "parking":true
     },
     {
       "image":"flyer5.png",
       "name":"All Night Long",
       "price":15,
       "inventoryStatus":"Limited",
-      "description":"Dbayeh Beach, Avenue XYZ"
+      "location":"Dbayeh Beach, Avenue XYZ",
+      "infoTheme":"Night Sky",
+      "infoDate":"Date",
+      "food": false,
+      "drinks":true,
+      "parking":true
     },
     {
       "image":"flyer6.png",
       "name":"Going Down",
       "price":20,
       "inventoryStatus":"Unavailable",
-      "description":"Burj Hammoud, ABC Street"
+      "location":"Burj Hammoud, ABC Street",
+      "infoTheme":"Underground",
+      "infoDate":"Date",
+      "food": false,
+      "drinks":true,
+      "parking":true
     },
     {
       "image":"flyer7.png",
       "name":"Summer Here",
       "price":10,
       "inventoryStatus":"Available",
-      "description":"Beirut, Hamra Square"
+      "location":"Beirut, Hamra Square",
+      "infoTheme":"Costume",
+      "infoDate":"Date",
+      "food": false,
+      "drinks":true,
+      "parking":true
     }
 
   ]

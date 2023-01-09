@@ -16,6 +16,9 @@ export interface Event {
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
+closeSidebar() {
+this.visibleSidebar = false;
+}
 
   visibleSidebar: boolean = false;
 

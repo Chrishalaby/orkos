@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { DialogService } from 'primeng/dynamicdialog';
+import { InfodialogueComponent } from './infodialogue/infodialogue.component';
 
 export interface Product {
   image: string,
   name: string,
   price: number,
   inventoryStatus: string,
-  description: string,
+  infoTheme: string,
+  infoDate: string,
+  food: boolean,
+  drinks: boolean,
+  parking: boolean,
+  location: string,
 }
 
 @Component({
@@ -37,16 +44,23 @@ export class HomeComponent implements OnInit {
     numScroll: 1,
     showIndicators: false
 }];
-  displayModal: boolean | undefined;
 
-  constructor(private readonly httpClient: HttpClient) {
+  constructor(private readonly httpClient: HttpClient, public dialogService: DialogService) {
   }
 
   ngOnInit() {
       this.httpClient.get<any>('assets/products.json').pipe(tap((products: any)=> {this.products = products.data;})).subscribe();
   }
 
-  showModalDialog() {
-    this.displayModal = true;
+  showModalDialog(product: Product){
+    this.dialogService.open(InfodialogueComponent, {
+      data: {
+        ...product
+      },
+      header: 'Information',
+      width: '70%',
+      contentStyle: {"max-height": "500px", "overflow": "auto"},
+      baseZIndex: 10000
+    })
   }
 }

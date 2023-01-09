@@ -13,13 +13,13 @@
                   <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">Tickets: {{product.inventoryStatus}}</span>
                   <div class="product-description flex flex-row justify-content-center">
                     <i class="pi pi-map-marker"></i>
-                    {{product.description}}
+                    {{product.location}}
                   </div>
                   <div class="product-time">{{product.time}}</div>
                   <div class="more-buttons mt-2">
                     <button pButton pRipple type="button" icon="pi pi-shopping-cart" class="p-button-raised p-button-text p-button-rounded mr-2"></button>
                     <button pButton pRipple type="button" icon="pi pi-star-fill" class="p-button-rounded p-button-success p-button-raised p-button-text mr-2" ></button>
-                    <button pButton pRipple type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-raised p-button-text" (click)="showModalDialog()"></button>
+                    <button pButton pRipple type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-raised p-button-text" (click)="showModalDialog(product)"></button>
                   </div>
               </div>
           </div>
@@ -42,13 +42,13 @@
                   <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">Tickets: {{product.inventoryStatus}}</span>
                   <div class="product-description flex flex-row justify-content-center">
                     <i class="pi pi-map-marker"></i>
-                    {{product.description}}
+                    {{product.location}}
                   </div>
                   <div class="product-time">{{product.time}}</div>
                   <div class="more-buttons mt-2">
                     <button pButton pRipple type="button" icon="pi pi-shopping-cart" class="p-button-raised p-button-text p-button-rounded mr-2"></button>
-                    <button pButton pRipple type="button" icon="pi pi-star-fill" class="p-button-rounded p-button-success p-button-raised p-button-text mr-2" (click)="showModalDialog()"></button>
-                    <button pButton pRipple type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-raised p-button-text" (click)="showModalDialog()"></button>
+                    <button pButton pRipple type="button" icon="pi pi-star-fill" class="p-button-rounded p-button-success p-button-raised p-button-text mr-2"></button>
+                    <button pButton pRipple type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-raised p-button-text" (click)="showModalDialog(product)"></button>
                   </div>
               </div>
           </div>
@@ -75,16 +75,3 @@
   <h2>Private Parties</h2>
 
 </section> -->
-
-
-<div>
-  <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '70vw'}"
-  [draggable]="false" [resizable]="false">
-  <p class="m-0">
-    Some information about this...
-  </p>
-  <ng-template pTemplate="footer">
-  <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
-  </ng-template>
-  </p-dialog>
-</div>

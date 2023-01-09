@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchBarComponent } from './Bar/search-bar/search-bar.component';
 import { FilesUploadComponent } from './files-upload/files-upload.component';
 import { HomeComponent } from './home/home.component';
+import { CookiePolicyComponent } from './legal/cookie-policy/cookie-policy.component';
+import { LegalmainComponent } from './legal/legalmain/legalmain.component';
 import { PrivPolicyComponent } from './legal/priv-policy/priv-policy.component';
+import { RefundComponent } from './legal/refund/refund.component';
 import { TermServComponent } from './legal/term-serv/term-serv.component';
 import { LoginComponent } from './user-login/login/login.component';
 import { PassResetComponent } from './user-login/pass-reset/pass-reset.component';
@@ -41,6 +44,18 @@ const routes: Routes = [
   {
     path: 'SearchBar',
     component: SearchBarComponent
+  },
+  {
+    path: 'legal',
+    component: LegalmainComponent
+  },
+  {
+    path: 'refund',
+    component: RefundComponent
+  },
+  {
+    path: 'cookie',
+    component: CookiePolicyComponent
   },
   {
     path: '**',

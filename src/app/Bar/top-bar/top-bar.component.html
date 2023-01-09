@@ -1,22 +1,23 @@
 <section class="flex flex-row top-bar surface-0 opacity-90" >
   <div>
     <p-sidebar [(visible)]="visibleSidebar" [baseZIndex]="5">
-      <div>
+      <div class="height-fix">
         <div class="flex flex-row">
           <img src="../assets/images/home/OrkosLogo.png" alt="Logo" class="w-3">
           <a class="flex align-self-center text-5xl ml-3 font-bold text-900" [routerLink]="['/']" style="text-decoration: none;"> Orkos</a>
         </div>
         <div class="flex flex-column mt-4">
-            <button pButton pRipple  class="p-button-text text-xl" [routerLink]="['/']">
+            <button pButton pRipple  class="p-button-text text-xl" (click)="closeSidebar()" [routerLink]="['/']">
               <i class="pi pi-home flex align-self-center"></i>
               <p class="pl-3 text-900">Home</p>
             </button>
-            <button pButton pRipple class="p-button-text text-xl" [routerLink]="['/files-upload']">
+            <button pButton pRipple class="p-button-text text-xl" (click)="closeSidebar()" [routerLink]="['/files-upload']">
               <i class="pi pi-upload flex align-self-center"></i>
               <p class="pl-3 text-900">File Upload</p>
             </button>
         </div>
       </div>
+      <button pButton pRipple class="p-button-text" (click)="closeSidebar()" [routerLink]="['/TermServ']">LEGAL</button>
     </p-sidebar>
     <button pButton pRipple type="button" class="p-button-raised p-button-text p-button-rounded mt-2" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
   </div>
@@ -32,28 +33,30 @@
           <div *ngIf="this.searchFormGroup.get('search')?.value" class="w-30rem">
             <!-- product-item  -->
             <div *ngFor="let product of filteredEvents" class="flex flex-row justify-content-between mb-2" >
-              <div class="flex flex-row ">
-                <div>
-                  <!-- class="image-container" -->
-                  <img src="assets/images/home/{{product.image}}" [alt]="product.name" class="max-h-4rem max-w-3rem"/>
-                  <!-- product-image -->
-                </div>
-                <div class="flex flex-column pl-2">
-                  <!-- product-list-detail -->
-                  <h3 class="mb-2">{{product.name}}</h3>
+              <button pButton pRipple type="button" style="width: 100%;"  class="p-button-text">
+                <div class="flex flex-row" style="width: 100%;" >
                   <div>
-                    <i class="pi pi-tag"></i>
-                    <!-- product-category-icon -->
-                    <span class="pl-1">Category</span>
-                    <!-- class="product-category" -->
+                    <!-- class="image-container" -->
+                    <img src="assets/images/home/{{product.image}}" [alt]="product.name" class="max-h-4rem max-w-3rem"/>
+                    <!-- product-image -->
+                  </div>
+                  <div class="flex flex-column">
+                    <!-- product-list-detail -->
+                    <h3 class="mb-2 pl-2" style="color: white;">{{product.name}}</h3>
+                    <div>
+                      <i class="pi pi-tag"></i>
+                      <!-- product-category-icon -->
+                      <span class="pl-1">Category</span>
+                      <!-- class="product-category" -->
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="flex flex-column">
-                <!-- product-list-action -->
-                <p class="mb-2 text-right font-bold">${{product.price}}</p>
-                <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()" class="px-1">{{product.inventoryStatus}}</span>
-              </div>
+                <div class="flex flex-column">
+                  <!-- product-list-action -->
+                  <p class="mb-2 text-right font-bold" style="color: white;">${{product.price}}</p>
+                  <span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()" class="px-1">{{product.inventoryStatus}}</span>
+                </div>
+              </button>
             </div>
           </div>
         </ng-template>

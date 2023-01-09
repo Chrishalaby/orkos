@@ -41,6 +41,11 @@ import { SearchBarComponent } from './Bar/search-bar/search-bar.component';
 import { RippleModule } from 'primeng/ripple';
 import { ChipModule } from 'primeng/chip';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import { LegalmainComponent } from './legal/legalmain/legalmain.component';
+import {TabMenuModule} from 'primeng/tabmenu';
+import { RefundComponent } from './legal/refund/refund.component';
+import { CookiePolicyComponent } from './legal/cookie-policy/cookie-policy.component';
+import { InfodialogueComponent } from './home/infodialogue/infodialogue.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,11 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     PrivPolicyComponent,
     TermServComponent,
     LowBarComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    LegalmainComponent,
+    RefundComponent,
+    CookiePolicyComponent,
+    InfodialogueComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +91,7 @@ import {OverlayPanelModule} from 'primeng/overlaypanel';
     DividerModule,
     CardModule,
     ChipModule,
+    TabMenuModule,
     RippleModule,
     StoreModule.forRoot(reducerToken, { initialState: getInitialState}),
     EffectsModule.forRoot([]),
