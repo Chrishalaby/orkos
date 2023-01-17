@@ -1,27 +1,27 @@
-<p-card class="flex flex-column justify-content-center align-items-center align-self-center h-screen">
+<p-card class="flex flex-column justify-content-center align-items-center align-self-center h-screen" [formGroup]="signUpFormGroup">
     <h1 class="text-4xl">Create Account</h1>
   <div class="flex sm:flex-row flex-column  mt-5">
     <span class="p-float-label p-1">
-      <input id="float-input" type="text" pInputText>
+      <input id="float-input" type="text" [formControlName]="fieldNames.FirstName" pInputText>
       <label for="float-input">First Name</label>
     </span>
     <span class="p-float-label p-1 sm:mt-0  mt-5">
-      <input id="float-input" type="text" pInputText>
+      <input id="float-input" type="text" [formControlName]="fieldNames.LastName" pInputText>
       <label for="float-input">Last Name</label>
     </span>
   </div>
   <span class="p-float-label mt-5">
-    <input id="float-input" type="text" pInputText class="w-full">
+    <input id="float-input" type="text" pInputText [formControlName]="fieldNames.Email" class="w-full">
     <label for="float-input">Email</label>
   </span>
   <span class="p-float-label mt-4 text-left">
     <!-- <input id="float-input" type="text" pInputText class="w-full"> -->
-    <p-password [toggleMask]="true" styleClass="p-password p-component p-inputwrapper p-input-icon-right"></p-password>
+    <p-password [toggleMask]="true" [formControlName]="fieldNames.Password" styleClass="p-password p-component p-inputwrapper p-input-icon-right"></p-password>
     <label for="float-input">Password</label>
   </span>
 
   <div class="flex flex-column align-items-center">
-    <button pButton pRipple class="mt-5 p-button-raised p-button-text" type="button" label="CREATE"></button>
+    <button pButton pRipple class="mt-5 p-button-raised p-button-text" type="button" (click)="submitForm()" label="CREATE"></button>
     <a class="mt-2 text-900 text-sm" [routerLink]="['/login']" style="text-decoration: none;"> Already have an account? Sign in!</a>
   </div>
 </p-card>

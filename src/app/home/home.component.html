@@ -1,6 +1,19 @@
 <section>
+  <button (click)="getUser()"> User</button>
+  <!-- <p>{{yes | json}}</p> -->
+  <p>
+    <span *ngFor="let user of yes">
+      {{user.name}}
+    </span>
+  </p>
+  <!-- <button (click)="getEvents()"> Eventss</button>
+  <p>
+    <span *ngFor="let event of eventgrp">
+      {{event.name}}
+    </span>
+  </p> -->
   <h2 class="text-center p-3">Just Dropped</h2>
-  <p-carousel [value]="products" [numVisible]="4" [numScroll]="3" [circular]="true" [showIndicators]="true" [responsiveOptions]="responsiveOptions">
+  <p-carousel [value]="eventgrp" [numVisible]="4" [numScroll]="3" [circular]="true" [showIndicators]="true" [responsiveOptions]="responsiveOptions">
     <ng-template let-product pTemplate="item">
       <div class="product-item">
           <div class="product-item-content">

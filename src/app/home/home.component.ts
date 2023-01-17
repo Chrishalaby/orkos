@@ -3,6 +3,7 @@ import { tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { DialogService } from 'primeng/dynamicdialog';
 import { InfodialogueComponent } from './infodialogue/infodialogue.component';
+import { environment } from 'src/environments/environment';
 
 export interface Product {
   image: string,
@@ -24,6 +25,8 @@ export interface Product {
 })
 
 export class HomeComponent implements OnInit {
+  yes: any;
+  eventgrp: any;
 
   products: Product[] = [];
   responsiveOptions = [{
@@ -50,6 +53,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
       this.httpClient.get<any>('assets/products.json').pipe(tap((products: any)=> {this.products = products.data;})).subscribe();
+      this.httpClient.get(`${environment.apiUrl}/events`).pipe(tap((events) => {
+        console.log(events)
+        this.eventgrp = events
+      })).subscribe();
   }
 
   showModalDialog(product: Product){
@@ -63,4 +70,17 @@ export class HomeComponent implements OnInit {
       baseZIndex: 10000
     })
   }
+  getUser(){
+    this.httpClient.get(`${environment.apiUrl}/users`).pipe(tap((users) => {
+      console.log(users)
+      this.yes = users
+    })).subscribe();
+  }
+
+  // getEvents(){
+  //   this.httpClient.get(`${environment.apiUrl}/events`).pipe(tap((events) => {
+  //     console.log(events)
+  //     this.eventgrp = events
+  //   })).subscribe();
+  // }
 }

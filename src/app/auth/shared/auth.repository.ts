@@ -5,7 +5,9 @@ import { AuthResponse } from './models/auth-response.model';
 import { SignInDetails, SignUpDetails } from './models/auth-details.model';
 import { environment } from 'src/environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthRepository {
   constructor(
     private readonly httpClient: HttpClient,

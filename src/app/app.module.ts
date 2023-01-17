@@ -46,6 +46,8 @@ import {TabMenuModule} from 'primeng/tabmenu';
 import { RefundComponent } from './legal/refund/refund.component';
 import { CookiePolicyComponent } from './legal/cookie-policy/cookie-policy.component';
 import { InfodialogueComponent } from './home/infodialogue/infodialogue.component';
+import { TicketComponent } from './ticket/ticket.component';
+import { AuthEffects } from './auth/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { InfodialogueComponent } from './home/infodialogue/infodialogue.componen
     LegalmainComponent,
     RefundComponent,
     CookiePolicyComponent,
-    InfodialogueComponent
+    InfodialogueComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,7 @@ import { InfodialogueComponent } from './home/infodialogue/infodialogue.componen
     TabMenuModule,
     RippleModule,
     StoreModule.forRoot(reducerToken, { initialState: getInitialState}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

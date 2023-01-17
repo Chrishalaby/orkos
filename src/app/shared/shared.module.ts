@@ -5,10 +5,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import {MenubarModule} from 'primeng/menubar';
-import { ModuleType } from '@Types/module.type';
 import {AvatarModule} from 'primeng/avatar';
 import { SubmitButtonComponent } from './components/submit-button/submit-button.component';
 import { ButtonModule } from 'primeng/button';
+import { ModuleType } from './types/module.type';
 
 const PrimengModules: ModuleType = [
   MenubarModule,

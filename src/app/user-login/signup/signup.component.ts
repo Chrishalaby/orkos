@@ -21,6 +21,7 @@ export class SignupComponent implements OnInit {
   ) {
   }
 
+
   ngOnInit(): void {
     this.signUpFormGroup = this.initializeFormGroup();
   }
@@ -33,7 +34,7 @@ export class SignupComponent implements OnInit {
     return this.formBuilder.group({
       [FieldNames.FirstName]: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
       [FieldNames.LastName]: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(16)]],
-      [FieldNames.Username]: ['', [Validators.required]],
+      // [FieldNames.Username]: ['', [Validators.required]],
       [FieldNames.Email]: ['', [Validators.required, Validators.email]],
       [FieldNames.Password]: ['', [Validators.required]],
     });
