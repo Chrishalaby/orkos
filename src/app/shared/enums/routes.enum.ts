@@ -18,7 +18,8 @@ export enum HomeRoutes {
 export enum AuthRoutes {
   Empty = '',
   SignUp ='sign-up',
-  SignIn ='sign-in'
+  SignIn ='sign-in',
+  PassReset = 'reset-password',
 }
 
 export enum ProjectsRoutes {

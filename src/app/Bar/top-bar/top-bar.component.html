@@ -1,7 +1,7 @@
 <section class="flex flex-row top-bar surface-0 opacity-90">
 
 
-  <button pButton pRipple type="button" class="p-button-raised p-button-text p-button-rounded mt-5 ml-5" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
+  <button pButton pRipple type="button" class="p-button-raised p-button-text p-button-rounded my-5 my-5 ml-5" (click)="visibleSidebar = true" icon="pi pi-bars"></button>
 
 
   <div class="flex justify-content-between w-full m-2 mr-5" [formGroup]="searchFormGroup">
@@ -51,8 +51,8 @@
 
 
     <div class="mt-4">
-      <button pButton pRipple type="button" label="Sign up" [routerLink]="['/signup']" class="p-button-raised p-button-text p-button-rounded p-button-secondary mx-1"></button>
-      <button pButton pRipple type="button" label="Log in" [routerLink]="['/login']" class="p-button-raised p-button-text p-button-rounded mx-1" style="background-color: #0c2a59; color: white;"></button>
+      <button pButton pRipple type="button" label="Sign up" [routerLink]="['/auth/sign-up']" class="p-button-raised p-button-text p-button-rounded p-button-secondary mx-1"></button>
+      <button pButton pRipple type="button" label="Log in" [routerLink]="['/auth/sign-in']" class="p-button-raised p-button-text p-button-rounded mx-1" style="background-color: #0c2a59; color: white;"></button>
     </div>
 
   </div>
@@ -71,7 +71,7 @@
             <i class="pi pi-home flex align-self-center"></i>
             <p class="pl-3 text-900">Home</p>
           </button>
-          <button pButton pRipple class="p-button-text text-xl" (click)="closeSidebar()" [routerLink]="['/files-upload']">
+          <button pButton pRipple class="p-button-text text-xl" (click)="closeSidebar()" *ngIf="(authFacade.selectAuthUser$ | async)?.isEventOrganiser" [routerLink]="['/files-upload']">
             <i class="pi pi-upload flex align-self-center"></i>
             <p class="pl-3 text-900">File Upload</p>
           </button>

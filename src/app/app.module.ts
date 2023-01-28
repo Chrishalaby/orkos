@@ -22,9 +22,9 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputMaskModule} from 'primeng/inputmask';
 import {CheckboxModule} from 'primeng/checkbox';
 import {TooltipModule} from 'primeng/tooltip';
-import { LoginComponent } from './user-login/login/login.component';
+// import { LoginComponent } from './auth/user-login/login/login.component';
 import {PasswordModule} from 'primeng/password';
-import { SignupComponent } from './user-login/signup/signup.component';
+// import { SignupComponent } from './auth/user-login/signup/signup.component';
 import {DividerModule} from 'primeng/divider';
 import {CardModule} from 'primeng/card';
 import { StoreModule } from '@ngrx/store';
@@ -32,7 +32,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducerToken, getInitialState, REDUCER_PROVIDER } from './app.store';
-import { PassResetComponent } from './user-login/pass-reset/pass-reset.component';
+import { PassResetComponent } from './auth/user-login/pass-reset/pass-reset.component';
 import { PrivPolicyComponent } from './legal/priv-policy/priv-policy.component';
 import { TermServComponent } from './legal/term-serv/term-serv.component';
 import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
@@ -48,6 +48,11 @@ import { CookiePolicyComponent } from './legal/cookie-policy/cookie-policy.compo
 import { InfodialogueComponent } from './home/infodialogue/infodialogue.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { AuthEffects } from './auth/store/auth.effects';
+import { AuthFacade } from './auth/store/auth.facade';
+import { AuthRepository } from './auth/shared/auth.repository';
+import { authReducer } from './auth/store/auth.reducer';
+import { ModuleRoutes } from './shared/enums/routes.enum';
+import { AuthRoutingModule } from './auth/auth-routing.module';
 
 @NgModule({
   declarations: [
@@ -55,9 +60,9 @@ import { AuthEffects } from './auth/store/auth.effects';
     TopBarComponent,
     HomeComponent,
     FilesUploadComponent,
-    LoginComponent,
-    SignupComponent,
-    PassResetComponent,
+    // LoginComponent,
+    // SignupComponent,
+    // PassResetComponent,
     PrivPolicyComponent,
     TermServComponent,
     LowBarComponent,
@@ -95,16 +100,19 @@ import { AuthEffects } from './auth/store/auth.effects';
     CardModule,
     ChipModule,
     TabMenuModule,
+    AuthRoutingModule,
+    ReactiveFormsModule,
     RippleModule,
     StoreModule.forRoot(reducerToken, { initialState: getInitialState}),
     EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forFeature(ModuleRoutes.Auth, authReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
 
   ],
-  providers: [MessageService, REDUCER_PROVIDER, DialogService],
+  providers: [MessageService, REDUCER_PROVIDER, DialogService,  AuthFacade, AuthRepository],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

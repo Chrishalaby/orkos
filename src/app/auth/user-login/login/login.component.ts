@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   public pending$: Observable<boolean> = this.authFacade.selectAuthPending$;
 
   public readonly fieldNames: typeof FieldNames = FieldNames;
+  isPending: boolean | undefined;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -37,7 +38,5 @@ export class LoginComponent implements OnInit {
       [FieldNames.Password]: ['', [Validators.required]],
     });
   }
-
-
 
 }

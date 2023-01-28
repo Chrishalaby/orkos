@@ -7,7 +7,7 @@
       width: 100%;
     }
     .low-bar-view{
-      position: sticky;
+      position: fixed;
       bottom: 0;
       z-index: 10;
       width: 100%;
@@ -15,26 +15,26 @@
   }
 }
 
+.desk-view {
+  display: none;
 
-@media only screen and (max-width: 600px) {
-  /* Hide the sign up and log in buttons on mobile view */
-  .desk-view{
-    display: none;
-  }
-  .mobile-view{
+  @media only screen and (min-width: 600px) {
     display: block;
   }
 }
 
-@media only screen and (min-width: 601px) {
-  /* Show the sign up and log in buttons on desktop view */
+.mobile-view {
+  display: block;
 
-
-  /* Hide the search button on desktop view */
-  .desk-view{
-    display: block;
-  }
-  .mobile-view{
+  @media only screen and (min-width: 600px) {
     display: none;
+  }
+}
+
+.adding-bottom-space{
+  margin-bottom: 50px;
+
+  @media only screen and (min-width: 600px){
+    margin-bottom: 0px;
   }
 }

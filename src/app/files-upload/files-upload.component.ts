@@ -1,10 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface Event {
   name: string;
   price: number;
-  ticketAmount: number;
+  inventoryStatus: number;
   location: string;
   image: File;
   infoTheme: string;
@@ -33,7 +36,7 @@ export class FilesUploadComponent implements OnInit {
   displayModalFill: boolean | undefined;
   displayModalPrev: boolean | undefined;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {}
 
   onSelect(event: { files: (File | undefined)[]; }) {
     this.image = event.files[0];
@@ -50,7 +53,7 @@ export class FilesUploadComponent implements OnInit {
     this.eventForm = this.formBuilder.group({
       name: '',
       price: '',
-      ticketAmount: '',
+      inventoryStatus: '',
       location: '',
       infoTheme: '',
       infoDate: '',
@@ -62,12 +65,16 @@ export class FilesUploadComponent implements OnInit {
     this.eventForm.valueChanges.subscribe((event) => {
       this.events = [event]
     });
-    // this.changeDetectorRef.detectChanges();
   }
+
   showModalFill() {
     this.displayModalFill = true;
   }
   showModalPreview() {
     this.displayModalPrev = true;
+  }
+  postEvents() {
+    this.httpClient.post(`${environment.apiUrl}/events`, this.events).subscribe();
+    console.log(this.events);
   }
 }

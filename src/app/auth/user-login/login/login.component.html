@@ -1,5 +1,4 @@
-<p-card class="flex flex-column justify-content-center align-items-center align-self-center h-screen" [formGroup]="signInFormGroup">
-  <div *ngIf="pending$ | async">Sign in success</div>
+<p-card class="flex flex-column justify-content-center align-items-center align-self-center" [formGroup]="signInFormGroup">
   <h1 class="text-5xl">Login</h1>
   <span class="p-float-label mt-6">
     <input [style]="{'width':'100%'}" [formControlName]="fieldNames.Email" id="float-input" type="text" pInputText>
@@ -11,15 +10,8 @@
   </span>
   <div class="flex flex-column align-items-center mt-3">
     <button pButton pRipple class="text-center p-button-raised p-button-text" type="button" (click)="submitForm()" label="Sign In"></button>
-    <a class="text-sm mt-2 text-900" [routerLink]="['/reset-password']" style="text-decoration: none;">Forgot your password?</a>
-    <a class="text-sm mt-1 text-900" [routerLink]="['/signup']" style="text-decoration: none;">Create Account</a>
+    <a class="text-sm mt-2 text-900" [routerLink]="['/auth/reset-password']" style="text-decoration: none;">Forgot your password?</a>
+    <a class="text-sm mt-1 text-900" [routerLink]="['/auth/sign-up']" style="text-decoration: none;">Create Account</a>
   </div>
-  <!-- <div class="col-12 flex justify-content-center">
-    <ngt-submit-button
-      [form]="signInFormGroup"
-      [pending]="!!(pending$ | async)"
-      label="Sign In"
-      (submitForm)="submitForm()"
-    ></ngt-submit-button>
-  </div> -->
+
 </p-card>

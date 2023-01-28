@@ -4,8 +4,9 @@ import { map, Observable, switchMap, tap } from 'rxjs';
 import { AuthRepository } from '../shared/auth.repository';
 import { AuthResponse } from '../shared/models/auth-response.model';
 import { AuthActionsTypes, signInSuccess, signUpSuccess } from './auth.actions';
-import { SignInProps, SignInSuccessProps, SignUpProps } from '../shared/models/auth-props.model';
+import { SignInProps, SignInSuccessProps, SignUpProps, SignUpSuccessProps } from '../shared/models/auth-props.model';
 import { AccessTokenService } from '../shared/access-token.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
@@ -28,6 +29,7 @@ export class AuthEffects {
           map((action: SignInSuccessProps) => action.response.accessToken),
           tap((accessToken: string) => this.accessTokenService.decodeAccessToken(accessToken)),
           tap((accessToken: string) => this.accessTokenService.setAccessToken(accessToken)),
+          tap(() => this.router.navigate(['/home'])),
         )
     ),
     { dispatch: false },
@@ -44,21 +46,25 @@ export class AuthEffects {
     ),
   );
 
-  // public signUpSuccess$: CreateEffectMetadata = createEffect(
-  //   () => (
-  //     this.actions$
-  //       .pipe(
-  //         ofType(AuthActionsTypes.SignUp),
-  //         switchMap((action: SignUpProps): Observable<AuthResponse> => this.authRepository.signUp(action.signUpDetails)),
-  //         map((response: AuthResponse) => signUpSuccess({response})),
-  //       )
-  //   ),
-  // );
+  public signUpSuccess$: CreateEffectMetadata = createEffect(
+    () => (
+      this.actions$
+        .pipe(
+          ofType(AuthActionsTypes.SignUpSuccess),
+          map((action: SignUpSuccessProps) => action.response.accessToken),
+          tap((accessToken: string) => this.accessTokenService.decodeAccessToken(accessToken)),
+          tap((accessToken: string) => this.accessTokenService.setAccessToken(accessToken)),
+          tap(() => this.router.navigate(['/home'])),
+        )
+    ),
+    { dispatch: false },
+  );
 
   constructor(
     private readonly actions$: Actions,
     private readonly authRepository: AuthRepository,
     private readonly accessTokenService: AccessTokenService,
+    private readonly router: Router,
   ) {
   }
 }

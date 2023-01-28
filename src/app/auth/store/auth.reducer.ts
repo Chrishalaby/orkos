@@ -4,6 +4,7 @@ import { AuthState } from './auth.state';
 
 export const authInitialState: AuthState = {
   pending: false,
+  user: null,
 };
 
 export const authReducer: ActionReducer<AuthState>= createReducer(

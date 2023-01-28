@@ -8,9 +8,10 @@ import { LegalmainComponent } from './legal/legalmain/legalmain.component';
 import { PrivPolicyComponent } from './legal/priv-policy/priv-policy.component';
 import { RefundComponent } from './legal/refund/refund.component';
 import { TermServComponent } from './legal/term-serv/term-serv.component';
-import { LoginComponent } from './user-login/login/login.component';
-import { PassResetComponent } from './user-login/pass-reset/pass-reset.component';
-import { SignupComponent } from './user-login/signup/signup.component';
+import { ModuleRoutes } from './shared/enums/routes.enum';
+import { ModuleType } from './shared/types/module.type';
+import { LoginComponent } from './auth/user-login/login/login.component';
+import { PassResetComponent } from './auth/user-login/pass-reset/pass-reset.component';
 
 const routes: Routes = [
   {
@@ -21,18 +22,23 @@ const routes: Routes = [
     path: 'files-upload',
     component: FilesUploadComponent
   },
+  // {
+  //   path: 'login',
+  //   component: LoginComponent
+  // },
+  // {
+  //   path: 'signup',
+  //   loadChildren: () => import('./signup/signup.module').then(m => m.SignupModule)
+  // },
   {
-    path: 'login',
-    component: LoginComponent
+    path: ModuleRoutes.Auth,
+    loadChildren: (): Promise<ModuleType> => import('./auth/auth.module')
+      .then((module: ModuleType): ModuleType => module.AuthModule),
   },
-  {
-    path: 'signup',
-    component: SignupComponent
-  },
-  {
-    path: 'reset-password',
-    component: PassResetComponent
-  },
+  // {
+  //   path: 'reset-password',
+  //   component: PassResetComponent
+  // },
   {
     path: 'PrivPolicy',
     component: PrivPolicyComponent

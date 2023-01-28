@@ -1,10 +1,7 @@
 export interface Profile {
   id: number;
-  username: string;
+  name: string;
   email: string;
-  firstName: string;
   lastName: string;
-  admin: boolean;
-  createdAt: string;
-  active: boolean;
+  isEventOrganiser: boolean;
 }

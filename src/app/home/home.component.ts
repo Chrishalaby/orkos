@@ -65,22 +65,20 @@ export class HomeComponent implements OnInit {
         ...product
       },
       header: 'Information',
-      width: '70%',
-      contentStyle: {"max-height": "500px", "overflow": "auto"},
       baseZIndex: 10000
     })
   }
-  getUser(){
-    this.httpClient.get(`${environment.apiUrl}/users`).pipe(tap((users) => {
-      console.log(users)
-      this.yes = users
-    })).subscribe();
-  }
-
-  // getEvents(){
-  //   this.httpClient.get(`${environment.apiUrl}/events`).pipe(tap((events) => {
-  //     console.log(events)
-  //     this.eventgrp = events
+  // getUser(){
+  //   this.httpClient.get(`${environment.apiUrl}/users`).pipe(tap((users) => {
+  //     console.log(users)
+  //     this.yes = users
   //   })).subscribe();
   // }
+
+  getEvents(){
+    this.httpClient.get(`${environment.apiUrl}/events`).pipe(tap((events) => {
+      console.log(events)
+      this.eventgrp = events
+    })).subscribe();
+  }
 }

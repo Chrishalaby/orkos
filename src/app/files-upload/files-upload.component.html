@@ -12,7 +12,7 @@
         <input id="float-input" type="text" pInputText formControlName="price">
         <label for="float-input">Price</label>
       </span>
-      <p-dropdown [options]="tickets" formControlName="ticketAmount" placeholder="Ticket availability" class="mt-4 max-w-14rem" optionLabel="name" optionValue="name"[showClear]="true"></p-dropdown>
+      <p-dropdown [options]="tickets" formControlName="inventoryStatus" placeholder="Ticket availability" class="mt-4 max-w-14rem" optionLabel="name" optionValue="name"[showClear]="true"></p-dropdown>
       <span class="p-float-label mt-4">
         <input id="float-input" type="text" pInputText formControlName="location">
         <label for="float-input">Location</label>
@@ -35,7 +35,7 @@
               <div>
                   <h4 class="mb-1">{{product.name}}</h4>
                   <h4 class="mt-0 mb-3">${{product.price}}</h4>
-                  <span [class]="eventForm.get('ticketAmount')?.value.toLowerCase()" class="p-1">Tickets: {{product.ticketAmount}}</span>
+                  <span [class]="eventForm.get('inventoryStatus')?.value.toLowerCase()" class="p-1">Tickets: {{product.inventoryStatus}}</span>
                   <div class="product-description flex flex-row justify-content-center">
                     <i class="pi pi-map-marker"></i>
                     {{product.location}}
@@ -52,9 +52,13 @@
   </p-carousel>
 </section>
 
+<div class="flex justify-content-center">
+  <button pButton pRipple type="button" label="Post" (click)="postEvents()" class="p-button-raised"></button>
+</div>
+
 
 <div>
-  <p-dialog header="Extra Information" [(visible)]="displayModalFill" [modal]="true" [style]="{width: '70vw'}"[draggable]="false" [resizable]="false">
+  <p-dialog header="Extra Information" [(visible)]="displayModalFill" [modal]="true"[draggable]="false" [resizable]="false">
   <form [formGroup]="eventForm" class="flex flex-column">
   <span class="p-float-label mt-4 mx-1">
     <input pInputText formControlName="infoTheme" tooltipPosition="right" pTooltip="Any specific theme? if not then write 'Casual'."/>
@@ -69,7 +73,7 @@
     <label class="block">Location</label>
   </span> -->
   <!-- ########## Was thinking of letting them add a google map link and linking it, not sure yet -->
-  <p-checkbox class="mt-3 mx-1" label="Food" [binary]="true" formControlName="food" tooltipPosition="right" pTooltip="Food Available?"></p-checkbox>
+  <p-checkbox class="mt-3 mx-1" [binary]="true" label="Food" formControlName="food" tooltipPosition="right" pTooltip="Food Available?"></p-checkbox>
   <p-checkbox class="mt-2 mx-1" [binary]="true" label="Drinks" formControlName="drinks" tooltipPosition="right" pTooltip="Drinks Available?"></p-checkbox>
   <p-checkbox class="mt-2 mx-1" [binary]="true" label="Parking" formControlName="parking" tooltipPosition="right" pTooltip="Parking Available?"></p-checkbox>
   </form>
@@ -79,9 +83,8 @@
   </p-dialog>
 </div>
 
-
 <div>
-  <p-dialog header="Information" class="line-height-4" [(visible)]="displayModalPrev" [modal]="true" [style]="{width: '70vw'}"[draggable]="false" [resizable]="false">
+  <p-dialog header="Information" class="line-height-4" [(visible)]="displayModalPrev" [modal]="true" [draggable]="false" [resizable]="false">
   <p>Theme: {{eventForm.get('infoTheme')?.value}}</p>
   <p>Date: {{eventForm.get('infoDate')?.value}}</p>
   <p>Location: {{eventForm.get('location')?.value}}</p>
