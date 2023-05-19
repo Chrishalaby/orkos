@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 export interface Event {

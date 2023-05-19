@@ -23,7 +23,6 @@
     </form>
   </p-card>
 
-
   <p-carousel class="mt-4 md:mt-0" [value]="events" [numVisible]="1" [numScroll]="1" [circular]="true" [showIndicators]="true">
     <ng-template let-product pTemplate="item">
       <h1 class="mb-3 md:mb-6 text-center">Preview</h1>
@@ -55,7 +54,6 @@
 <div class="flex justify-content-center">
   <button pButton pRipple type="button" label="Post" (click)="postEvents()" class="p-button-raised"></button>
 </div>
-
 
 <div>
   <p-dialog header="Extra Information" [(visible)]="displayModalFill" [modal]="true"[draggable]="false" [resizable]="false">

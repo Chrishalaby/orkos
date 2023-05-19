@@ -1,0 +1,14 @@
+<div>
+  <p>Theme: {{ ticket.infoTheme }}</p>
+  <p>Date: {{ ticket.infoDate }}</p>
+  <p>Location: {{ ticket.location }}</p>
+  <p>Food: {{ ticket.food ? "Available" : "Unavailable" }}</p>
+  <p>Drinks: {{ ticket.drinks ? "Available" : "Unavailable" }}</p>
+  <p>Parking: {{ ticket.parking ? "Available" : "Unavailable" }}</p>
+  <p-button
+    icon="pi pi-check"
+    (click)="submit()"
+    label="Buy Ticket"
+    styleClass="p-button-text"
+  ></p-button>
+</div>

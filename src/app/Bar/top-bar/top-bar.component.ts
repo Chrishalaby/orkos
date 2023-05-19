@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { tap } from 'rxjs';
 import { AuthFacade } from 'src/app/auth/store/auth.facade';
@@ -17,16 +17,19 @@ export interface Event {
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
-  closeSidebar() {
-  this.visibleSidebar = false;
+  visibleSidebar: boolean = false;
+  sideBar(){
+    this.visibleSidebar = !this.visibleSidebar;
   }
 
-  visibleSidebar: boolean = false;
 
   searchFormGroup!: FormGroup;
   events: Event[] = []
   filteredEvents: Event[] = []
-  constructor(private readonly formBuilder: FormBuilder, private readonly httpClient: HttpClient, public readonly authFacade: AuthFacade) { }
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly httpClient: HttpClient,
+  ) { }
 
   ngOnInit(): void {
     this.httpClient.get<any>('assets/products.json').pipe(tap((events: any) => {this.events = events.data;})).subscribe()

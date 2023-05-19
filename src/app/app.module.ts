@@ -1,58 +1,59 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import {CarouselModule} from 'primeng/carousel';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { TopBarComponent } from './Bar/top-bar/top-bar.component';
-import { HomeComponent } from './home/home.component';
-import {HttpClientModule} from '@angular/common/http';
-import {ButtonModule} from 'primeng/button';
-import {DialogModule} from 'primeng/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {SidebarModule} from 'primeng/sidebar';
-import { FilesUploadComponent } from './files-upload/files-upload.component';
-import {FileUploadModule} from 'primeng/fileupload';
-import {InputTextModule} from 'primeng/inputtext';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
-import { MessageService } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MenuModule} from 'primeng/menu';
-import {DropdownModule} from 'primeng/dropdown';
-import {InputMaskModule} from 'primeng/inputmask';
-import {CheckboxModule} from 'primeng/checkbox';
-import {TooltipModule} from 'primeng/tooltip';
-// import { LoginComponent } from './auth/user-login/login/login.component';
-import {PasswordModule} from 'primeng/password';
-// import { SignupComponent } from './auth/user-login/signup/signup.component';
-import {DividerModule} from 'primeng/divider';
-import {CardModule} from 'primeng/card';
-import { StoreModule } from '@ngrx/store';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
-import { environment } from 'src/environments/environment';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducerToken, getInitialState, REDUCER_PROVIDER } from './app.store';
-import { PassResetComponent } from './auth/user-login/pass-reset/pass-reset.component';
-import { PrivPolicyComponent } from './legal/priv-policy/priv-policy.component';
-import { TermServComponent } from './legal/term-serv/term-serv.component';
-import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { CarouselModule } from 'primeng/carousel';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ChipModule } from 'primeng/chip';
+import { DialogModule } from 'primeng/dialog';
+import { DividerModule } from 'primeng/divider';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextModule } from 'primeng/inputtext';
+import { MenuModule } from 'primeng/menu';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PasswordModule } from 'primeng/password';
+import { RippleModule } from 'primeng/ripple';
+import { SidebarModule } from 'primeng/sidebar';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TooltipModule } from 'primeng/tooltip';
+import { environment } from 'src/environments/environment';
 import { LowBarComponent } from './Bar/low-bar/low-bar.component';
 import { SearchBarComponent } from './Bar/search-bar/search-bar.component';
-import { RippleModule } from 'primeng/ripple';
-import { ChipModule } from 'primeng/chip';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
-import { LegalmainComponent } from './legal/legalmain/legalmain.component';
-import {TabMenuModule} from 'primeng/tabmenu';
-import { RefundComponent } from './legal/refund/refund.component';
-import { CookiePolicyComponent } from './legal/cookie-policy/cookie-policy.component';
-import { InfodialogueComponent } from './home/infodialogue/infodialogue.component';
-import { TicketComponent } from './ticket/ticket.component';
+import { SideBarComponent } from './Bar/side-bar/side-bar.component';
+import { TopBarComponent } from './Bar/top-bar/top-bar.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { REDUCER_PROVIDER, getInitialState, reducerToken } from './app.store';
+import { AuthRoutingModule } from './auth/auth-routing.module';
+import { AuthRepository } from './auth/shared/auth.repository';
 import { AuthEffects } from './auth/store/auth.effects';
 import { AuthFacade } from './auth/store/auth.facade';
-import { AuthRepository } from './auth/shared/auth.repository';
 import { authReducer } from './auth/store/auth.reducer';
+import { BoughtTicketsComponent } from './bought-tickets/bought-tickets.component';
+import { BuyTicketComponent } from './buy-ticket/buy-ticket.component';
+import { FilesUploadComponent } from './files-upload/files-upload.component';
+import { HomeComponent } from './home/home.component';
+import { InfodialogueComponent } from './home/infodialogue/infodialogue.component';
+import { CookiePolicyComponent } from './legal/cookie-policy/cookie-policy.component';
+import { LegalmainComponent } from './legal/legalmain/legalmain.component';
+import { PrivPolicyComponent } from './legal/priv-policy/priv-policy.component';
+import { RefundComponent } from './legal/refund/refund.component';
+import { TermServComponent } from './legal/term-serv/term-serv.component';
 import { ModuleRoutes } from './shared/enums/routes.enum';
-import { AuthRoutingModule } from './auth/auth-routing.module';
+import { TicketComponent } from './ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -60,9 +61,6 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
     TopBarComponent,
     HomeComponent,
     FilesUploadComponent,
-    // LoginComponent,
-    // SignupComponent,
-    // PassResetComponent,
     PrivPolicyComponent,
     TermServComponent,
     LowBarComponent,
@@ -71,9 +69,13 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
     RefundComponent,
     CookiePolicyComponent,
     InfodialogueComponent,
-    TicketComponent
+    TicketComponent,
+    SideBarComponent,
+    BuyTicketComponent,
+    BoughtTicketsComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     CarouselModule,
@@ -87,7 +89,6 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
     MessagesModule,
     MessageModule,
     FormsModule,
-    ReactiveFormsModule,
     MenuModule,
     DropdownModule,
     InputMaskModule,
@@ -103,16 +104,21 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
     AuthRoutingModule,
     ReactiveFormsModule,
     RippleModule,
-    StoreModule.forRoot(reducerToken, { initialState: getInitialState}),
+    StoreModule.forRoot(reducerToken, { initialState: getInitialState }),
     EffectsModule.forRoot([AuthEffects]),
     StoreModule.forFeature(ModuleRoutes.Auth, authReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
-
   ],
-  providers: [MessageService, REDUCER_PROVIDER, DialogService,  AuthFacade, AuthRepository],
-  bootstrap: [AppComponent]
+  providers: [
+    MessageService,
+    REDUCER_PROVIDER,
+    DialogService,
+    AuthFacade,
+    AuthRepository,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

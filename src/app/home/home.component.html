@@ -1,89 +1,134 @@
-<section>
-  <!-- <button (click)="getUser()"> User</button>
-  <p>
-    <span *ngFor="let user of yes">
-      {{user.name}}
-    </span>
-  </p> -->
-  <!-- <button (click)="getEvents()"> Eventss</button>
-  <p>
-    <span *ngFor="let event of eventgrp">
-      {{event.name}}
-    </span>
-  </p> -->
+<section class="text-800">
   <h2 class="text-center p-3">Just Dropped</h2>
-  <p-carousel [value]="eventgrp" [numVisible]="4" [numScroll]="3" [circular]="true" [showIndicators]="true" [responsiveOptions]="responsiveOptions">
+  <p-carousel
+    [value]="eventgrp"
+    [numVisible]="4"
+    [numScroll]="3"
+    [circular]="true"
+    [showIndicators]="true"
+    [responsiveOptions]="responsiveOptions"
+  >
     <ng-template let-product pTemplate="item">
       <div class="product-item">
-          <div class="product-item-content">
-              <div class="main-container mb-3">
-                  <img [src]="'assets/images/home/' + product.image" [alt]="product.name" class="product-image"/>
-              </div>
-              <div>
-                  <h4 class="mb-1">{{product.name}}</h4>
-                  <h4 class="mt-0 mb-3">${{product.price}}</h4>
-                  <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">Tickets: {{product.inventoryStatus}}</span>
-                  <div class="product-description flex flex-row justify-content-center">
-                    <i class="pi pi-map-marker"></i>
-                    <p class="ml-1">{{product.location}}</p>
-                  </div>
-                  <div class="product-time">{{product.time}}</div>
-                  <div class="more-buttons mt-2">
-                    <button pButton pRipple type="button" icon="pi pi-shopping-cart" class="p-button-raised p-button-text p-button-rounded mr-2"></button>
-                    <button pButton pRipple type="button" icon="pi pi-star-fill" class="p-button-rounded p-button-success p-button-raised p-button-text mr-2" ></button>
-                    <button pButton pRipple type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-raised p-button-text" (click)="showModalDialog(product)"></button>
-                  </div>
-              </div>
+        <div class="product-item-content bg-primary-reverse hover:bg-blue-900">
+          <div class="main-container mb-3">
+            <img
+              [src]="'assets/images/home/' + product.image"
+              [alt]="product.name"
+              class="product-image"
+            />
           </div>
+          <div>
+            <h4 class="mb-1">{{ product.name }}</h4>
+            <h4 class="mt-0 mb-3">${{ product.price }}</h4>
+            <span
+              [class]="
+                'product-badge status-' + product.inventoryStatus.toLowerCase()
+              "
+              >Tickets: {{ product.inventoryStatus }}</span
+            >
+            <div
+              class="product-description flex flex-row justify-content-center"
+            >
+              <i class="pi pi-map-marker"></i>
+              <p class="ml-1">{{ product.location }}</p>
+            </div>
+            <div class="product-time">{{ product.time }}</div>
+            <div class="more-buttons mt-2">
+              <button
+                pButton
+                pRipple
+                type="button"
+                (click)="buyTicket(product)"
+                icon="pi pi-shopping-cart"
+                class="p-button-outlined p-button-text p-button-rounded mr-2"
+              ></button>
+              <button
+                pButton
+                pRipple
+                type="button"
+                [icon]="pi"
+                (click)="changeStar()"
+                class="p-button-outlined p-button-text p-button-rounded mr-2"
+              ></button>
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-info"
+                class="p-button-rounded p-button-outlined p-button-text"
+                (click)="showModalDialog(product)"
+              ></button>
+            </div>
+          </div>
+        </div>
       </div>
     </ng-template>
   </p-carousel>
 </section>
 <section>
   <h2 class="text-center p-3">Most Popular</h2>
-  <p-carousel [value]="products" [numVisible]="4" [numScroll]="3" [circular]="true" [showIndicators]="true" [responsiveOptions]="responsiveOptions">
+  <p-carousel
+    [value]="products"
+    [numVisible]="4"
+    [numScroll]="3"
+    [circular]="true"
+    [showIndicators]="true"
+    [responsiveOptions]="responsiveOptions"
+  >
     <ng-template let-product pTemplate="item">
       <div class="product-item">
-          <div class="product-item-content">
-              <div class="main-container mb-3">
-                  <img [src]="'assets/images/home/' + product.image" [alt]="product.name" class="product-image"/>
-              </div>
-              <div>
-                  <h4 class="mb-1">{{product.name}}</h4>
-                  <h4 class="mt-0 mb-3">${{product.price}}</h4>
-                  <span [class]="'product-badge status-'+product.inventoryStatus.toLowerCase()">Tickets: {{product.inventoryStatus}}</span>
-                  <div class="product-description flex flex-row justify-content-center">
-                    <i class="pi pi-map-marker"></i>
-                    {{product.location}}
-                  </div>
-                  <div class="product-time">{{product.time}}</div>
-                  <div class="more-buttons mt-2">
-                    <button pButton pRipple type="button" icon="pi pi-shopping-cart" class="p-button-raised p-button-text p-button-rounded mr-2"></button>
-                    <button pButton pRipple type="button" icon="pi pi-star-fill" class="p-button-rounded p-button-success p-button-raised p-button-text mr-2"></button>
-                    <button pButton pRipple type="button" icon="pi pi-info" class="p-button-rounded p-button-warning p-button-raised p-button-text" (click)="showModalDialog(product)"></button>
-                  </div>
-              </div>
+        <div class="product-item-content bg-primary-reverse hover:bg-blue-900">
+          <div class="main-container mb-3">
+            <img
+              [src]="'assets/images/home/' + product.image"
+              [alt]="product.name"
+              class="product-image"
+            />
           </div>
+          <div>
+            <h4 class="mb-1">{{ product.name }}</h4>
+            <h4 class="mt-0 mb-3">${{ product.price }}</h4>
+            <span
+              [class]="
+                'product-badge status-' + product.inventoryStatus.toLowerCase()
+              "
+              >Tickets: {{ product.inventoryStatus }}</span
+            >
+            <div
+              class="product-description flex flex-row justify-content-center"
+            >
+              <i class="pi pi-map-marker"></i>
+              {{ product.location }}
+            </div>
+            <div class="product-time">{{ product.time }}</div>
+            <div class="more-buttons mt-2">
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-shopping-cart"
+                class="p-button-raised p-button-text p-button-rounded mr-2"
+              ></button>
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-star-fill"
+                class="p-button-rounded p-button-success p-button-raised p-button-text mr-2"
+              ></button>
+              <button
+                pButton
+                pRipple
+                type="button"
+                icon="pi pi-info"
+                class="p-button-rounded p-button-warning p-button-raised p-button-text"
+                (click)="showModalDialog(product)"
+              ></button>
+            </div>
+          </div>
+        </div>
       </div>
     </ng-template>
   </p-carousel>
 </section>
-<!-- <section>
-  <h2>Close to You</h2>
-</section>
-<section>
-  <h2>Beach Side</h2>
-
-</section>
-<section>
-  <h2>Mountain Side</h2>
-
-</section>
-<section>
-  <h2>Techno</h2>
-
-</section>
-<section>
-  <h2>Private Parties</h2>
-
-</section> -->

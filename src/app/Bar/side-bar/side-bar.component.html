@@ -1,0 +1,56 @@
+<p-sidebar [baseZIndex]="5" [(visible)]="isVisible" (onHide)="closeComponent()">
+  <div class="height-fix">
+    <div class="flex flex-row">
+      <img src="../assets/images/home/OrkosLogo.png" alt="Logo" class="w-3" />
+      <a
+        class="flex align-self-center text-5xl ml-3 font-bold text-900"
+        [routerLink]="['/']"
+        style="text-decoration: none"
+      >
+        Orkos</a
+      >
+    </div>
+    <div class="flex flex-column mt-4">
+      <button
+        pButton
+        pRipple
+        class="p-button-text text-xl"
+        (click)="closeComponent()"
+        [routerLink]="['/']"
+      >
+        <i class="pi pi-home flex align-self-center"></i>
+        <p class="pl-3 text-900">Home</p>
+      </button>
+      <button
+        pButton
+        pRipple
+        class="p-button-text text-xl"
+        (click)="closeComponent()"
+        [routerLink]="['/files-upload']"
+      >
+        <i class="pi pi-upload flex align-self-center"></i>
+        <p class="pl-3 text-900">File Upload</p>
+      </button>
+      <button
+        pButton
+        pRipple
+        class="p-button-text text-xl"
+        (click)="closeComponent()"
+        [routerLink]="['/bought-tickets']"
+      >
+        <!--  CHANGE THE ROUTING -->
+        <i class="pi pi-shopping-cart flex align-self-center"></i>
+        <p class="pl-3 text-900">Bought Tickets</p>
+      </button>
+    </div>
+  </div>
+  <button
+    pButton
+    pRipple
+    class="p-button-text"
+    (click)="closeComponent()"
+    [routerLink]="['/TermServ']"
+  >
+    LEGAL
+  </button>
+</p-sidebar>

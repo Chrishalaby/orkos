@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LowBarComponent implements OnInit {
   visibleSidebar: boolean = false;
+
+  showSideBar() {
+    this.visibleSidebar = true;
+  }
+  hideSideBar() {
+    this.visibleSidebar = false;
+  }
+
   constructor() { }
 
   ngOnInit(): void {
